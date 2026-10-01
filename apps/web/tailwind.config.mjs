@@ -8,13 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#39FF14', // Fluorescent Green
-        ink: '#0B0D0C',
-        background: '#F7F1E3', // Warm editorial background
+        primary: 'rgb(var(--primary-rgb) / <alpha-value>)',
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
+        background: 'rgb(var(--background-rgb) / <alpha-value>)',
         dark: '#101210',
-        surface: '#FFFFFF',
-        muted: '#6B706D',
-        border: '#D9DDD8',
+        surface: 'rgb(var(--surface-rgb) / <alpha-value>)',
+        muted: 'rgb(var(--muted-rgb) / <alpha-value>)',
+        border: 'rgb(var(--border-rgb) / <alpha-value>)',
         brand: {
           green: '#39FF14',
           ink: '#0B0D0C',

@@ -4,21 +4,31 @@ interface Props {
   class?: string;
 }
 
-const { code, class: className = "w-4 h-3" } = Astro.props;
+const { code, class: className = "w-4.5 h-3.5" } = Astro.props;
+
+// Normalizar código de idioma a código ISO de bandera del paquete flag-icons
+const flagMap: Record<string, string> = {
+  es: "es", // España
+  en: "us", // Inglés -> Estados Unidos
+  us: "us",
+  gb: "gb",
+  fr: "fr",
+  de: "de",
+  it: "it",
+  pt: "pt",
+  br: "br",
+  pe: "pe",
+  mx: "mx",
+  co: "co",
+  ar: "ar",
+  cl: "cl",
+};
+
+const countryCode = flagMap[code.toLowerCase()] || code.toLowerCase();
 ---
 
-<span class={`inline-block rounded-[2px] overflow-hidden shadow-2xs shrink-0 ${className}`}>
-  {code === "es" && (
-    <svg viewBox="0 0 750 500" class="w-full h-full object-cover">
-      <rect width="750" height="500" fill="#c60b1e" />
-      <rect width="750" height="250" y="125" fill="#ffc400" />
-    </svg>
-  )}
-  {code === "en" && (
-    <svg viewBox="0 0 741 390" class="w-full h-full object-cover">
-      <rect width="741" height="390" fill="#b22234" />
-      <path d="M0,45H741M0,105H741M0,165H741M0,225H741M0,285H741M0,345H741" stroke="#fff" stroke-width="30" />
-      <rect width="296" height="210" fill="#3c3b6e" />
-    </svg>
-  )}
-</span>
+<span
+  class={`fi fi-${countryCode} rounded-[3px] shadow-xs border border-black/15 dark:border-white/25 inline-block shrink-0 bg-cover bg-center align-middle ${className}`}
+  role="img"
+  aria-label={`Bandera ${countryCode.toUpperCase()}`}
+></span>

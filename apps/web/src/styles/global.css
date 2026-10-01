@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "flag-icons/css/flag-icons.min.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -12,16 +13,32 @@
   --muted: #6B706D;
   --border: #D9DDD8;
   --dark: #101210;
+
+  --primary-rgb: 57 255 20;
+  --ink-rgb: 11 13 12;
+  --background-rgb: 247 241 227;
+  --surface-rgb: 255 255 255;
+  --muted-rgb: 107 112 109;
+  --border-rgb: 217 221 216;
+  --dark-rgb: 16 18 16;
 }
 
 .dark {
   --primary: #39FF14;
   --ink: #F4F4F5;
   --background: #101210; /* Dark editorial canvas */
-  --surface: #161816;
+  --surface: #181B18;
   --muted: #949E97;
-  --border: #232724;
+  --border: #2E342E;
   --dark: #101210;
+
+  --primary-rgb: 57 255 20;
+  --ink-rgb: 244 244 245;
+  --background-rgb: 16 18 16;
+  --surface-rgb: 24 27 24;
+  --muted-rgb: 148 158 151;
+  --border-rgb: 46 52 46;
+  --dark-rgb: 16 18 16;
 }
 
 html {
