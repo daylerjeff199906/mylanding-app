@@ -1,0 +1,116 @@
+{
+  "brand": {
+    "name": "JEFF Santos",
+    "fullName": "Jose Jefferson Santos Panaifo",
+    "tagline": "Editorial Architecture",
+    "motto": "Observe problems → understand context → contribute solutions → learn → share"
+  },
+  "palette": {
+    "primary": {
+      "name": "Fluorescent Green",
+      "hex": "#39FF14",
+      "rgb": "57, 255, 20",
+      "hsl": "111, 100%, 54%"
+    },
+    "ink": {
+      "name": "Deep Ink",
+      "hex": "#0B0D0C",
+      "rgb": "11, 13, 12"
+    },
+    "backgroundLight": {
+      "name": "Warm Editorial Background",
+      "hex": "#F7F1E3",
+      "rgb": "247, 241, 227"
+    },
+    "darkCanvas": {
+      "name": "Dark Editorial Canvas",
+      "hex": "#101210",
+      "rgb": "16, 18, 16"
+    },
+    "surface": {
+      "name": "Pure White / Dark Surface",
+      "light": "#FFFFFF",
+      "dark": "#181B18"
+    },
+    "muted": {
+      "name": "Muted Editorial Text",
+      "light": "#6B706D",
+      "dark": "#949E97"
+    },
+    "border": {
+      "name": "Soft Editorial Border",
+      "light": "#D9DDD8",
+      "dark": "#2E342E"
+    }
+  },
+  "typography": {
+    "display": "Anton, Arial Narrow, sans-serif",
+    "body": "Sora, system-ui, sans-serif",
+    "code": "JetBrains Mono, Geist Mono, monospace"
+  },
+  "assets": [
+    {
+      "id": "isotipo-dark",
+      "path": "/brand/isotipo.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 64 64",
+      "usage": "Primary avatar, social profiles, dark backgrounds"
+    },
+    {
+      "id": "isotipo-light",
+      "path": "/brand/isotipo-light.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 64 64",
+      "usage": "Light backgrounds, stationery, warm paper"
+    },
+    {
+      "id": "isotipo-monochrome",
+      "path": "/brand/isotipo-monochrome.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 64 64",
+      "usage": "Single-color printing, laser engrave, stamps"
+    },
+    {
+      "id": "logo-horizontal-dark",
+      "path": "/brand/logo-horizontal-dark.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 320 64",
+      "usage": "Dark website headers, slide decks, wide banners"
+    },
+    {
+      "id": "logo-horizontal-light",
+      "path": "/brand/logo-horizontal-light.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 320 64",
+      "usage": "Light website headers, invoices, white backgrounds"
+    },
+    {
+      "id": "logo-vertical",
+      "path": "/brand/logo-vertical.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 200 180",
+      "usage": "Centered covers, hero splash, posters"
+    },
+    {
+      "id": "favicon",
+      "path": "/favicon.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 64 64",
+      "usage": "Browser tab icon (supports high-DPI scaling)"
+    },
+    {
+      "id": "apple-touch-icon",
+      "path": "/brand/apple-touch-icon.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 180 180",
+      "usage": "iOS Home screen, PWA web app icon"
+    },
+    {
+      "id": "og-image",
+      "path": "/brand/og-image.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 1200 630",
+      "usage": "Social media preview (OpenGraph, Twitter cards)"
+    }
+  ]
+}

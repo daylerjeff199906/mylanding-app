@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <!-- Rounded Apple Touch Canvas -->
+  <rect width="180" height="180" rx="36" fill="#101210"/>
+  <rect x="1.5" y="1.5" width="177" height="177" rx="34.5" stroke="#2E342E" stroke-width="3"/>
+  
+  <!-- Scaled JS Monogram -->
+  <g transform="translate(36, 42)">
+    <!-- J (White) -->
+    <path d="M38 0H60V60C60 76 46 88 28 88C11 88 3 77 3 63H22C22 68 28 71 33 71C38 71 41 68 41 60V0H38Z" fill="#FFFFFF"/>
+    <!-- S (Fluorescent Green #39FF14) -->
+    <path d="M60 63H76C76.5 68 81 72 88 72C95 72 99 68 99 63C99 54 65 49 65 26C65 10 77 0 95 0C113 0 123 11 123.5 25H106.5C106 18 101 15 95 15C89 15 85 18 85 23C85 31 119 35 119 60C119 77 105 88 88 88C69 88 61 75 60 63Z" fill="#39FF14"/>
+  </g>
+
+  <!-- Accent point -->
+  <circle cx="145" cy="145" r="7" fill="#39FF14"/>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "name": "JEFF Santos · Editorial Architecture",
+  "short_name": "JEFF Santos",
+  "description": "Plataforma personal y profesional de Jose Jefferson Santos Panaifo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101210",
+  "theme_color": "#101210",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/brand/isotipo.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/brand/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}

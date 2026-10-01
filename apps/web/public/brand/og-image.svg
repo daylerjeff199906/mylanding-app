@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <!-- Background Canvas -->
+  <rect width="1200" height="630" fill="#101210"/>
+  
+  <!-- Subtle Architectural Grid -->
+  <g opacity="0.08" stroke="#FFFFFF" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Top Accent Bar -->
+  <rect x="0" y="0" width="1200" height="6" fill="#39FF14"/>
+
+  <!-- Brand Identity Top Left -->
+  <g transform="translate(80, 80)">
+    <!-- Monogram Box -->
+    <rect width="56" height="56" rx="8" fill="#181B18" stroke="#2E342E" stroke-width="1.5"/>
+    <g transform="translate(11, 13)">
+      <path d="M12 0H19V19C19 24 15 27 9 27C3 27 1 24 1 19H7C7 21 8 22 10 22C12 22 13 21 13 19V0H12Z" fill="#FFFFFF"/>
+      <path d="M19 19H24C24.2 21 26 22 28 22C30 22 31.5 21 31.5 19.5C31.5 16.5 21 15 21 8C21 3.5 25 0 30.5 0C36 0 39 3.5 39.2 7.5H34C33.8 5.5 32 4.5 30.5 4.5C28.5 4.5 27 5.5 27 7C27 9.5 37.5 11 37.5 18.5C37.5 24 33 27 28 27C22 27 19.2 23 19 19Z" fill="#39FF14"/>
+    </g>
+    <circle cx="46" cy="46" r="2.5" fill="#39FF14"/>
+
+    <!-- Brand Name and Title -->
+    <text x="72" y="32" font-family="'Anton', sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" letter-spacing="-0.02em">
+      JEFF SANTOS
+    </text>
+    <text x="72" y="48" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500" fill="#949E97" letter-spacing="0.16em">
+      EDITORIAL ARCHITECTURE · JOSE JEFFERSON SANTOS PANAIFO
+    </text>
+  </g>
+
+  <!-- Hero Statement / Headline -->
+  <g transform="translate(80, 240)">
+    <text x="0" y="0" font-family="'Anton', sans-serif" font-size="58" font-weight="bold" fill="#FFFFFF" letter-spacing="-0.02em" line-height="0.95">
+      ¿Y SI LO SIMPLE
+    </text>
+    <text x="0" y="70" font-family="'Anton', sans-serif" font-size="58" font-weight="bold" fill="#39FF14" letter-spacing="-0.02em">
+      NOS ACERCARA A LO QUE NECESITAMOS?
+    </text>
+    
+    <text x="0" y="140" font-family="'Sora', sans-serif" font-size="20" font-weight="400" fill="#949E97">
+      Menos pasos innecesarios · Plataformas más fáciles de entender · Experiencias humanas.
+    </text>
+  </g>
+
+  <!-- Bottom Details Bar -->
+  <g transform="translate(80, 530)">
+    <line x1="0" y1="0" x2="1040" y2="0" stroke="#2E342E" stroke-width="1"/>
+    
+    <text x="0" y="32" font-family="'JetBrains Mono', monospace" font-size="12" fill="#39FF14" letter-spacing="0.1em">
+      // PLATAFORMA PERSONAL PROFESIONAL
+    </text>
+
+    <text x="1040" y="32" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="12" fill="#949E97">
+      TURBOREPO · ASTRO · MOTION · GSAP
+    </text>
+  </g>
+</svg>
