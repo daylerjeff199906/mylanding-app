@@ -1,0 +1,73 @@
+---
+import type { I18nChapterTwo } from "@platform/types";
+
+interface Props {
+  data: I18nChapterTwo;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="capitulo-02"
+  data-story="chapter-two"
+  class="min-h-[85vh] flex flex-col justify-center container-editorial py-28"
+>
+  <div class="space-y-12 max-w-4xl">
+    {data.sectionTag && (
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+          // {data.sectionTag}
+        </span>
+      </div>
+    )}
+
+    <!-- Sequential statements with Anton & Sora -->
+    <div class="space-y-6">
+      <p
+        data-chapter-part="phrase-1"
+        class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-ink dark:text-white leading-[1.05]"
+      >
+        {data.phraseOne}
+      </p>
+
+      <p
+        data-chapter-part="phrase-2"
+        class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-muted leading-[1.05]"
+      >
+        {data.phraseTwo}
+      </p>
+    </div>
+
+    <!-- Transition into programming tool -->
+    <div class="pt-6 max-w-xl space-y-2">
+      <p
+        data-chapter-part="tool-phrase"
+        class="text-base sm:text-lg font-sans text-ink/80 dark:text-white/80 leading-relaxed font-medium"
+      >
+        {data.toolPhrase}
+      </p>
+      <p class="text-sm font-sans text-muted">
+        {data.realProjectsPhrase}
+      </p>
+    </div>
+
+    <!-- Principle statement with prominent visual weight and geometric border -->
+    <div
+      data-chapter-part="principle"
+      class="pt-8 border-t border-border dark:border-white/10 max-w-3xl"
+    >
+      <div class="relative p-6 sm:p-8 rounded-md bg-surface dark:bg-surface border-2 border-ink dark:border-white/20 shadow-xs">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          <span class="text-xs font-mono text-muted uppercase tracking-widest font-semibold">
+            {data.principleTag}
+          </span>
+        </div>
+        <blockquote class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-ink dark:text-white leading-none">
+          "{data.keyPrinciple}"
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>

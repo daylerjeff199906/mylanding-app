@@ -1,0 +1,89 @@
+---
+import type { I18nActivities } from "@platform/types";
+
+interface Props {
+  data: I18nActivities;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="actividades"
+  data-story="timeline"
+  class="py-32 container-editorial border-t border-border dark:border-white/10"
+>
+  <div class="space-y-16">
+    <div class="space-y-4 max-w-3xl">
+      {data.sectionTag && (
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+            // {data.sectionTag}
+          </span>
+        </div>
+      )}
+
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]">
+        {data.lead}
+      </h2>
+    </div>
+
+    <!-- Timeline with vertical progress line in primary green -->
+    <div class="relative pl-6 sm:pl-10">
+      <!-- Static background rail -->
+      <div class="absolute left-2 top-2 bottom-4 w-px bg-border dark:bg-white/10"></div>
+
+      <!-- Animated progress line driven by Motion scroll() in fluorescent green -->
+      <div
+        data-part="timeline-line"
+        class="absolute left-2 top-2 bottom-4 w-px bg-primary origin-top"
+        style="transform: scaleY(0);"
+      ></div>
+
+      <div class="space-y-12">
+        {
+          data.groups.map((group) => (
+            <div class="space-y-8">
+              <!-- Year marker -->
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono font-bold tracking-widest text-ink dark:text-white bg-surface dark:bg-white/5 px-2.5 py-1 rounded-[4px] border border-border dark:border-white/10">
+                  {group.year}
+                </span>
+              </div>
+
+              <!-- List of activities -->
+              <div class="space-y-6">
+                {group.items.map((item) => (
+                  <div
+                    data-part="timeline-item"
+                    class="relative pl-4 space-y-1.5"
+                  >
+                    <!-- Dot marker -->
+                    <span class="absolute -left-[29px] sm:-left-[45px] top-2 w-2 h-2 rounded-full bg-primary border-2 border-background dark:border-dark"></span>
+
+                    <div class="flex items-baseline gap-3">
+                      <span class="text-xs font-mono text-primary font-bold uppercase">
+                        {item.type}
+                      </span>
+                      <span class="text-xs font-mono text-muted">
+                        / {item.period}
+                      </span>
+                    </div>
+
+                    <h3 class="text-xl sm:text-2xl font-display uppercase tracking-tight text-ink dark:text-white">
+                      {item.title}
+                    </h3>
+
+                    <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed max-w-xl">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+---
+import type { I18nInstitutions } from "@platform/types";
+
+interface Props {
+  data: I18nInstitutions;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="contexto"
+  class="py-32 container-editorial border-t border-border dark:border-white/10"
+>
+  <div class="space-y-16">
+    <div class="space-y-4 max-w-3xl">
+      {data.sectionTag && (
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+            // {data.sectionTag}
+          </span>
+        </div>
+      )}
+
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]">
+        {data.lead}
+      </h2>
+    </div>
+
+    <!-- Editorial list of institutions -->
+    <div class="divide-y divide-border dark:divide-white/10">
+      {
+        data.items.map((item) => (
+          <div
+            data-reveal-editorial
+            class="group py-8 transition-colors duration-300"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+              <!-- Name & period -->
+              <div class="md:col-span-5 space-y-1">
+                <h3 class="text-2xl sm:text-3xl font-display uppercase tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
+                  {item.name}
+                </h3>
+                {item.period && (
+                  <span class="text-xs font-mono text-muted">
+                    {item.period}
+                  </span>
+                )}
+              </div>
+
+              <!-- Role & Area -->
+              <div class="md:col-span-4 space-y-1">
+                <span class="text-xs font-mono text-muted uppercase block">
+                  {data.roleLabel}
+                </span>
+                <p class="text-sm font-sans font-semibold text-ink dark:text-white">
+                  {item.role}
+                </p>
+                <p class="text-xs font-mono text-primary font-medium">
+                  {item.area}
+                </p>
+              </div>
+
+              <!-- Context narrative -->
+              <div class="md:col-span-3">
+                <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+                  {item.context}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

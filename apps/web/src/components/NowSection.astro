@@ -1,0 +1,72 @@
+---
+import type { I18nNow } from "@platform/types";
+
+interface Props {
+  data: I18nNow;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="ahora"
+  class="py-32 container-editorial border-t border-border dark:border-white/10"
+>
+  <div class="space-y-16">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div class="space-y-4 max-w-2xl">
+        {data.sectionTag && (
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+              // {data.sectionTag}
+            </span>
+          </div>
+        )}
+
+        <div class="flex items-center gap-3">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+          </span>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]">
+            {data.lead}
+          </h2>
+        </div>
+
+        <p class="text-base font-sans text-muted">
+          {data.subtitle}
+        </p>
+      </div>
+
+      <div class="text-xs font-mono text-muted">
+        {data.lastUpdatedLabel}: {data.lastUpdatedDate}
+      </div>
+    </div>
+
+    <!-- Now status grid with 4 categories -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+      {
+        data.items.map((item) => (
+          <div
+            data-reveal-editorial
+            class="p-6 sm:p-8 rounded-md bg-surface dark:bg-surface border border-border dark:border-white/10 space-y-3 hover:border-primary transition-colors duration-300"
+          >
+            <span class="text-xs font-mono uppercase tracking-widest text-primary font-bold block">
+              / {item.category}
+            </span>
+
+            <p class="text-lg font-sans font-semibold text-ink dark:text-white leading-snug">
+              {item.description}
+            </p>
+
+            {item.detail && (
+              <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed pt-1">
+                {item.detail}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

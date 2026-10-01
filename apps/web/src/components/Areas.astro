@@ -1,0 +1,74 @@
+---
+import type { I18nAreas } from "@platform/types";
+
+interface Props {
+  data: I18nAreas;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="areas"
+  data-story="areas"
+  class="py-32 container-editorial"
+>
+  <div class="space-y-16">
+    <div class="space-y-4 max-w-3xl">
+      {data.sectionTag && (
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+            // {data.sectionTag}
+          </span>
+        </div>
+      )}
+
+      <!-- Section lead with Anton display -->
+      <h2
+        data-areas-lead
+        class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]"
+      >
+        {data.lead}
+      </h2>
+
+      <p class="text-base font-sans text-muted max-w-xl">
+        {data.subtitle}
+      </p>
+    </div>
+
+    <!-- Typographic composition (open sections, thin separators, no bulky boxes) -->
+    <div class="py-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-14 items-baseline">
+        {
+          data.items.map((item, index) => {
+            // Placement variations to maintain editorial rhythm
+            const colSpan = index === 2 ? "md:col-start-3 md:col-span-8 md:text-center" : "md:col-span-6";
+
+            return (
+              <div data-area-item class={`${colSpan} group`}>
+                <div class="border-b border-border dark:border-white/10 pb-4 transition-colors group-hover:border-primary">
+                  <div class="flex items-baseline gap-2 mb-1">
+                    <span class="text-xs font-mono text-primary font-bold">
+                      {item.number}
+                    </span>
+                    <span class="text-xs font-mono text-muted uppercase">
+                      / Contexto
+                    </span>
+                  </div>
+
+                  <h3 class="text-3xl sm:text-4xl font-display uppercase tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
+                    {item.name}
+                  </h3>
+
+                  <p class="text-xs sm:text-sm font-sans text-muted mt-2">
+                    {item.tagline}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

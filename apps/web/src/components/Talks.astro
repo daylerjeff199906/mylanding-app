@@ -1,0 +1,73 @@
+---
+import type { I18nTalks } from "@platform/types";
+
+interface Props {
+  data: I18nTalks;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="charlas"
+  class="py-32 container-editorial border-t border-border dark:border-white/10"
+>
+  <div class="space-y-16">
+    <div class="space-y-4 max-w-3xl">
+      {data.sectionTag && (
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+            // {data.sectionTag}
+          </span>
+        </div>
+      )}
+
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]">
+        {data.lead}
+      </h2>
+    </div>
+
+    <!-- Editorial entries for talks -->
+    <div class="space-y-8">
+      {
+        data.items.map((talk) => (
+          <article
+            data-reveal-editorial
+            class="group p-6 sm:p-8 rounded-md bg-surface dark:bg-surface border border-border dark:border-white/10 hover:border-primary transition-colors duration-300"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-4 border-b border-border dark:border-white/10">
+              <div class="flex items-baseline gap-4">
+                <span class="text-xs font-mono font-bold text-primary bg-ink px-2 py-0.5 rounded-[4px]">
+                  {talk.number}
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-display uppercase tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
+                  {talk.title}
+                </h3>
+              </div>
+
+              <!-- Subtle visual state without noisy badge clutter -->
+              <div class="flex items-center gap-2 self-start sm:self-auto">
+                <span
+                  class={`w-2 h-2 rounded-full ${
+                    talk.status === "preparing"
+                      ? "bg-primary animate-pulse"
+                      : "bg-muted"
+                  }`}
+                ></span>
+                <span class="text-xs font-mono text-muted uppercase font-medium">
+                  {talk.statusLabel}
+                </span>
+              </div>
+            </div>
+
+            {talk.summary && (
+              <p class="pt-4 text-xs sm:text-sm font-sans text-muted max-w-3xl leading-relaxed">
+                {talk.summary}
+              </p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

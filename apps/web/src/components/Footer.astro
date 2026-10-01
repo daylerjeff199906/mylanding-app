@@ -1,0 +1,53 @@
+---
+import type { I18nFooter, I18nSiteInfo } from "@platform/types";
+import MonogramJS from "./ui/MonogramJS.astro";
+
+interface Props {
+  data: I18nFooter;
+  site: I18nSiteInfo;
+}
+
+const { data, site } = Astro.props;
+---
+
+<footer class="py-20 border-t border-border dark:border-white/10 bg-black/5 dark:bg-black/30">
+  <div class="container-editorial space-y-12">
+    <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-8">
+      <div class="space-y-3 max-w-md">
+        <div class="flex items-center gap-3">
+          <MonogramJS size="sm" />
+          <span class="font-display text-2xl uppercase tracking-tight text-ink dark:text-white">
+            {site.brandName}
+          </span>
+        </div>
+        <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+          {data.brandStatement}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-8 text-xs font-mono font-medium text-muted">
+        <a href="#hero" class="editorial-link">
+          <span>{data.backToTop}</span>
+          <span class="arrow font-sans">↑</span>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="editorial-link">
+          <span>{data.github}</span>
+          <span class="arrow font-sans">↗</span>
+        </a>
+        <a href="mailto:contacto@jeffsantos.dev" class="editorial-link">
+          <span>{data.contact}</span>
+          <span class="arrow font-sans">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-border dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
+      <p class="font-medium text-ink dark:text-white">
+        "{data.philosophyQuote}"
+      </p>
+      <p>
+        © {new Date().getFullYear()} {site.brandName} · {data.rights}
+      </p>
+    </div>
+  </div>
+</footer>

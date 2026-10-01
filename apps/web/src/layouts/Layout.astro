@@ -1,0 +1,73 @@
+---
+import { ClientRouter } from "astro:transitions";
+import type { I18nDictionary } from "@platform/types";
+import { getDictionary, DEFAULT_LOCALE } from "@platform/content";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  dict?: I18nDictionary;
+  title?: string;
+  description?: string;
+}
+
+const {
+  dict = getDictionary(DEFAULT_LOCALE),
+  title = dict.site.defaultTitle,
+  description = dict.site.defaultDescription
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={dict.locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Best Practices with dynamic non-hardcoded titles -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url.href} />
+
+    <!-- Prevent Dark Mode Flicker -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <!-- Astro View Transitions -->
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-background dark:bg-dark text-ink dark:text-white selection:bg-primary selection:text-ink transition-colors duration-300">
+    <Header dict={dict} />
+
+    <main id="main-content" class="overflow-x-hidden">
+      <slot />
+    </main>
+
+    <Footer data={dict.footer} site={dict.site} />
+
+    <!-- Animation lifecycle bootstrap -->
+    <script>
+      import { initAllAnimations } from "../animations";
+
+      // Execute on initial render
+      initAllAnimations();
+    </script>
+  </body>
+</html>

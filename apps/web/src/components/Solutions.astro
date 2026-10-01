@@ -1,0 +1,88 @@
+---
+import type { I18nSolutions } from "@platform/types";
+
+interface Props {
+  data: I18nSolutions;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="soluciones"
+  data-story="solutions"
+  class="py-32 container-editorial"
+>
+  <div class="space-y-20">
+    <div class="space-y-8 max-w-3xl">
+      {data.sectionTag && (
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+            // {data.sectionTag}
+          </span>
+        </div>
+      )}
+
+      <!-- Lead statement -->
+      <h2
+        data-part="solutions-lead"
+        class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]"
+      >
+        {data.lead}
+      </h2>
+
+      <!-- Statements appearing one by one -->
+      <div class="space-y-2 pt-2 border-l-2 border-primary pl-6 sm:pl-8">
+        {
+          data.statements.map((statement) => (
+            <p
+              data-part="statement"
+              class="text-xl sm:text-2xl font-sans font-light italic text-ink/90 dark:text-white/90 leading-snug"
+            >
+              {statement}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Discrete tactical solutions list -->
+    <div class="pt-4 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          data.items.map((item) => (
+            <div
+              data-part="solution-card"
+              class="p-6 sm:p-8 rounded-md bg-surface dark:bg-surface border border-border dark:border-white/10 space-y-4 hover:border-primary transition-colors duration-300"
+            >
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-primary font-bold">
+                  {item.number} / {item.type}
+                </span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded-sm bg-primary/10 text-ink dark:text-primary border border-primary/30">
+                  {item.impact}
+                </span>
+              </div>
+
+              <h3 class="text-xl font-display uppercase tracking-tight text-ink dark:text-white leading-tight">
+                {item.title}
+              </h3>
+
+              <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- CTA to explore solutions -->
+      <div class="text-center pt-2">
+        <a href="#contexto" class="btn-primary">
+          <span>{data.ctaExplore}</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

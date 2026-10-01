@@ -1,0 +1,64 @@
+---
+import type { I18nHero } from "@platform/types";
+
+interface Props {
+  data: I18nHero;
+}
+
+const { data } = Astro.props;
+---
+
+<section
+  id="hero"
+  data-story="hero"
+  class="min-h-[92vh] flex flex-col justify-center container-editorial pt-36 pb-20 select-text"
+>
+  <div class="space-y-8 max-w-5xl">
+    <!-- Main headline statement in Anton display (larger, responsive) -->
+    <h1
+      data-hero-part="lead"
+      class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.5rem] 2xl:text-[6rem] font-display text-ink dark:text-white uppercase leading-[0.92] tracking-tight break-words max-w-4xl"
+    >
+      {data.headline}
+    </h1>
+
+    <!-- Strong editorial reflection in Sora -->
+    <div class="space-y-4 max-w-3xl">
+      <p
+        data-hero-part="subheading"
+        class="text-lg sm:text-xl md:text-2xl font-sans font-bold text-ink dark:text-white leading-snug"
+      >
+        {data.subheading}
+      </p>
+
+      {data.description && (
+        <p
+          data-hero-part="desc"
+          class="text-base sm:text-lg font-sans text-muted leading-relaxed max-w-2xl"
+        >
+          {data.description}
+        </p>
+      )}
+    </div>
+
+    <!-- Concrete observations -->
+    <div class="pt-6 border-t border-border dark:border-white/10 max-w-2xl">
+      <ul class="space-y-3 font-sans text-sm sm:text-base text-ink/85 dark:text-white/85 leading-relaxed font-medium">
+        {
+          data.observations.map((item) => (
+            <li data-hero-part="observation" class="flex items-baseline gap-3">
+              <span class="text-primary font-bold">―</span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="mt-16 flex items-center gap-2.5 text-xs sm:text-sm font-sans italic text-muted">
+    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+    <span class="hover:text-primary transition-colors cursor-default">{data.scrollCue}</span>
+  </div>
+</section>

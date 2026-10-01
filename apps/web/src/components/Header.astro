@@ -1,0 +1,92 @@
+---
+import type { I18nDictionary } from "@platform/types";
+import MonogramJS from "./ui/MonogramJS.astro";
+import LanguageToggle from "./ui/LanguageToggle.astro";
+
+interface Props {
+  dict: I18nDictionary;
+}
+
+const { dict } = Astro.props;
+const { site, nav, locale } = dict;
+const basePath = locale === "en" ? "/en" : "";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/90 dark:bg-dark/90 backdrop-blur-md border-b border-border dark:border-white/10 transition-colors duration-300">
+  <!-- Reading scroll progress indicator with fluorescent green accent -->
+  <div
+    data-scroll-indicator
+    class="h-[2px] bg-primary origin-left w-full"
+    style="transform: scaleX(0);"
+  ></div>
+
+  <div class="container-editorial py-3.5 flex items-center justify-between">
+    <!-- Brand identity with JS monogram -->
+    <a href={`${basePath}/#hero`} class="group flex items-center gap-3 no-underline text-ink dark:text-white">
+      <MonogramJS size="md" />
+      <div class="flex flex-col">
+        <span class="font-display text-xl tracking-tight leading-none group-hover:text-primary transition-colors duration-200">
+          {site.brandName}
+        </span>
+        <span class="font-mono text-[10px] text-muted tracking-wider uppercase">
+          {site.monogram} · Editorial Architecture
+        </span>
+      </div>
+    </a>
+
+    <!-- Navigation links -->
+    <div class="flex items-center gap-4 sm:gap-6">
+      <nav class="hidden md:flex items-center gap-5 text-xs font-mono font-medium text-muted">
+        <a href={`${basePath}/#proyectos`} class="hover:text-ink dark:hover:text-white hover:text-primary transition-colors">
+          {nav.projects}
+        </a>
+        <a href={`${basePath}/#soluciones`} class="hover:text-ink dark:hover:text-white transition-colors">
+          {nav.solutions}
+        </a>
+        <a href={`${basePath}/#contexto`} class="hover:text-ink dark:hover:text-white transition-colors">
+          {nav.context}
+        </a>
+        <a href={`${basePath}/#charlas`} class="hover:text-ink dark:hover:text-white transition-colors">
+          {nav.talks}
+        </a>
+        <a href={`${basePath}/#ahora`} class="hover:text-ink dark:hover:text-white transition-colors">
+          {nav.now}
+        </a>
+      </nav>
+
+      <!-- Language selector & dark mode toggle -->
+      <div class="flex items-center gap-2 pl-2 border-l border-border dark:border-white/10">
+        <LanguageToggle currentLocale={locale} />
+
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar tema oscuro"
+          class="p-1.5 text-muted hover:text-ink dark:hover:text-white rounded-[6px] hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+        >
+          <svg class="w-4 h-4 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function setupThemeToggle() {
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+
+  setupThemeToggle();
+  document.addEventListener("astro:page-load", setupThemeToggle);
+</script>
