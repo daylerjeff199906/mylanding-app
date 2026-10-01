@@ -10,60 +10,152 @@ const { currentLocale } = Astro.props;
 interface LanguageOption {
   code: SupportedLocale;
   label: string;
-  flag: string;
+  name: string;
   url: string;
 }
 
 const languages: LanguageOption[] = [
-  { code: "es", label: "ES · Español", flag: "🇪🇸", url: "/" },
-  { code: "en", label: "EN · English", flag: "🇺🇸", url: "/en" }
-  // Fácil de extender en el futuro (ej. pt, fr, de)
+  { code: "es", label: "ES", name: "Español", url: "/" },
+  { code: "en", label: "EN", name: "English", url: "/en" }
+  // Fácil de extender en el futuro (ej. pt, fr, de, it)
 ];
+
+const currentLang = languages.find((l) => l.code === currentLocale) || languages[0];
 ---
 
-<div class="relative inline-flex items-center">
-  <label for="language-select" class="sr-only">Seleccionar idioma / Select language</label>
-  <div class="relative flex items-center">
-    <select
-      id="language-select"
-      class="appearance-none cursor-pointer pl-2.5 pr-7 py-1.5 rounded-[6px] bg-surface dark:bg-dark border border-border dark:border-white/15 text-xs font-mono font-medium text-ink dark:text-white hover:border-primary focus:border-primary focus:outline-hidden transition-colors shadow-2xs"
-      aria-label="Seleccionar idioma"
-    >
-      {
-        languages.map((lang) => (
-          <option
-            value={lang.url}
-            selected={currentLocale === lang.code}
-            class="bg-surface dark:bg-dark text-ink dark:text-white py-1"
-          >
-            {lang.flag} {lang.code.toUpperCase()}
-          </option>
-        ))
-      }
-    </select>
+<div class="relative inline-block text-left" id="language-dropdown-wrapper">
+  <!-- Trigger Button -->
+  <button
+    id="language-dropdown-btn"
+    type="button"
+    class="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-[6px] bg-surface dark:bg-[#161816] border border-border dark:border-white/15 text-xs font-mono font-medium text-ink dark:text-[#F4F4F5] hover:border-primary dark:hover:border-primary focus:outline-hidden transition-all shadow-2xs cursor-pointer select-none"
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-label="Seleccionar idioma"
+  >
+    <!-- Flag Indicator -->
+    <span class="w-4 h-3 flex items-center justify-center rounded-[2px] overflow-hidden shadow-2xs shrink-0">
+      {currentLang.code === "es" ? (
+        <!-- Spain Flag SVG -->
+        <svg viewBox="0 0 750 500" class="w-full h-full object-cover">
+          <rect width="750" height="500" fill="#c60b1e" />
+          <rect width="750" height="250" y="125" fill="#ffc400" />
+        </svg>
+      ) : (
+        <!-- US Flag SVG -->
+        <svg viewBox="0 0 741 390" class="w-full h-full object-cover">
+          <rect width="741" height="390" fill="#b22234" />
+          <path d="M0,45H741M0,105H741M0,165H741M0,225H741M0,285H741M0,345H741" stroke="#fff" stroke-width="30" />
+          <rect width="296" height="210" fill="#3c3b6e" />
+        </svg>
+      )}
+    </span>
 
-    <!-- Custom indicator chevron -->
-    <div class="pointer-events-none absolute right-2 flex items-center text-muted">
-      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
+    <span class="font-bold tracking-wider">{currentLang.label}</span>
+
+    <svg
+      id="dropdown-chevron"
+      class="w-3 h-3 text-muted transition-transform duration-200"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id="language-dropdown-menu"
+    class="hidden absolute right-0 mt-1.5 w-36 rounded-[8px] bg-surface dark:bg-[#161816] border border-border dark:border-white/15 shadow-lg shadow-black/10 dark:shadow-black/40 py-1 z-50 transition-all font-mono text-xs"
+    role="listbox"
+  >
+    {
+      languages.map((lang) => {
+        const isSelected = currentLocale === lang.code;
+
+        return (
+          <a
+            href={lang.url}
+            role="option"
+            aria-selected={isSelected}
+            class={`flex items-center justify-between px-3 py-2 transition-colors no-underline ${
+              isSelected
+                ? "bg-black/5 dark:bg-white/10 text-ink dark:text-white font-bold"
+                : "text-muted hover:text-ink dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+            }`}
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="w-4 h-3 flex items-center justify-center rounded-[2px] overflow-hidden shadow-2xs shrink-0">
+                {lang.code === "es" ? (
+                  <svg viewBox="0 0 750 500" class="w-full h-full object-cover">
+                    <rect width="750" height="500" fill="#c60b1e" />
+                    <rect width="750" height="250" y="125" fill="#ffc400" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 741 390" class="w-full h-full object-cover">
+                    <rect width="741" height="390" fill="#b22234" />
+                    <path d="M0,45H741M0,105H741M0,165H741M0,225H741M0,285H741M0,345H741" stroke="#fff" stroke-width="30" />
+                    <rect width="296" height="210" fill="#3c3b6e" />
+                  </svg>
+                )}
+              </span>
+              <span>{lang.name}</span>
+            </div>
+
+            {isSelected && <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>}
+          </a>
+        );
+      })
+    }
   </div>
 </div>
 
 <script>
-  function setupLanguageSelect() {
-    const select = document.getElementById("language-select") as HTMLSelectElement | null;
-    if (!select) return;
+  function setupLanguageDropdown() {
+    const wrapper = document.getElementById("language-dropdown-wrapper");
+    const btn = document.getElementById("language-dropdown-btn");
+    const menu = document.getElementById("language-dropdown-menu");
+    const chevron = document.getElementById("dropdown-chevron");
 
-    select.addEventListener("change", (e) => {
-      const target = e.target as HTMLSelectElement;
-      if (target.value && target.value !== window.location.pathname) {
-        window.location.href = target.value;
+    if (!wrapper || !btn || !menu || !chevron) return;
+
+    let isOpen = false;
+
+    function toggleMenu(show?: boolean) {
+      isOpen = show !== undefined ? show : !isOpen;
+      if (isOpen) {
+        menu?.classList.remove("hidden");
+        btn?.setAttribute("aria-expanded", "true");
+        chevron?.classList.add("rotate-180");
+      } else {
+        menu?.classList.add("hidden");
+        btn?.setAttribute("aria-expanded", "false");
+        chevron?.classList.remove("rotate-180");
+      }
+    }
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!wrapper.contains(e.target as Node)) {
+        toggleMenu(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen) {
+        toggleMenu(false);
+        btn.focus();
       }
     });
   }
 
-  setupLanguageSelect();
-  document.addEventListener("astro:page-load", setupLanguageSelect);
+  setupLanguageDropdown();
+  document.addEventListener("astro:page-load", setupLanguageDropdown);
 </script>
