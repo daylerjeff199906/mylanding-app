@@ -21,6 +21,7 @@
     "@platform/ui": "workspace:*",
     "@platform/utils": "workspace:*",
     "astro": "^5.4.1",
+    "country-flag-icons": "^1.6.20",
     "gsap": "^3.12.7",
     "motion": "^12.4.7",
     "react": "^18.3.1",
