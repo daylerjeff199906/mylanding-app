@@ -22,6 +22,7 @@ export const enDictionary: I18nDictionary = {
     contact: "Contact"
   },
   hero: {
+    eyebrow: "Software · Architecture · Experience",
     headline: "What if simplicity brought us closer to what we need?",
     headlineLead: "What if simplicity",
     headlineAccent: "brought us closer to what we need?",

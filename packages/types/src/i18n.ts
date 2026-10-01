@@ -21,6 +21,9 @@ export interface I18nNav {
 }
 
 export interface I18nHero {
+  eyebrow?: string;
+  eyebrowName?: string;
+  eyebrowRole?: string;
   headline: string;
   headlineLead?: string;
   headlineAccent?: string;

@@ -6,48 +6,68 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// Formatear el eyebrow con separadores destacados en verde fluorescente
+const eyebrowParts = data.eyebrow
+  ? data.eyebrow.split(/[·*]/).map((s) => s.trim()).filter(Boolean)
+  : [];
 ---
 
 <section
   id="hero"
   data-story="hero"
-  class="min-h-[92vh] flex flex-col justify-center container-editorial pt-36 pb-20 select-text"
+  class="min-h-[92vh] flex flex-col justify-center container-editorial pt-36 sm:pt-40 pb-20 select-text"
 >
-  <div class="space-y-8 max-w-5xl">
-    <!-- Main headline statement in Anton display (larger, responsive) -->
+  <div class="space-y-8 sm:space-y-10 max-w-5xl">
+    <!-- Subtitle superior minimalista (Software · Arquitectura · Experiencia) -->
+    {eyebrowParts.length > 0 && (
+      <div data-hero-part="eyebrow" class="inline-flex flex-wrap items-center gap-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider text-muted dark:text-[#949E97] uppercase">
+        {eyebrowParts.map((part, idx) => (
+          <>
+            <span>{part}</span>
+            {idx < eyebrowParts.length - 1 && (
+              <span class="text-primary font-bold text-sm select-none">·</span>
+            )}
+          </>
+        ))}
+      </div>
+    )}
+
+    <!-- Gran pregunta central en tipografía de alto impacto -->
     <h1
       data-hero-part="lead"
-      class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.5rem] 2xl:text-[6rem] font-display text-ink dark:text-white uppercase leading-[0.92] tracking-tight break-words max-w-4xl"
+      class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] 2xl:text-[7.25rem] font-display text-ink dark:text-[#FAF7EE] uppercase leading-[0.92] tracking-tight break-words max-w-4xl"
     >
       {data.headline}
     </h1>
 
-    <!-- Strong editorial reflection in Sora -->
+    <!-- Subtítulo / Reflexión inmediatamente abajo -->
     <div class="space-y-4 max-w-3xl">
       <p
         data-hero-part="subheading"
-        class="text-lg sm:text-xl md:text-2xl font-sans font-bold text-ink dark:text-white leading-snug"
+        class="text-xl sm:text-2xl md:text-3xl font-sans font-semibold text-ink dark:text-[#FAF7EE] leading-snug tracking-tight"
       >
         {data.subheading}
       </p>
 
+      <!-- Descripción abierta con tono y contraste suave -->
       {data.description && (
         <p
           data-hero-part="desc"
-          class="text-base sm:text-lg font-sans text-muted leading-relaxed max-w-2xl"
+          class="text-base sm:text-lg font-sans text-muted dark:text-[#8E9690] leading-relaxed max-w-2xl pt-1"
         >
           {data.description}
         </p>
       )}
     </div>
 
-    <!-- Concrete observations -->
+    <!-- Observaciones concretas sin card ni contenedor (texto abierto y sutil separación) -->
     <div class="pt-6 border-t border-border dark:border-white/10 max-w-2xl">
-      <ul class="space-y-3 font-sans text-sm sm:text-base text-ink/85 dark:text-white/85 leading-relaxed font-medium">
+      <ul class="space-y-3 font-sans text-sm sm:text-base text-ink/85 dark:text-[#C4CAC5] leading-relaxed font-medium">
         {
           data.observations.map((item) => (
             <li data-hero-part="observation" class="flex items-baseline gap-3">
-              <span class="text-primary font-bold">―</span>
+              <span class="text-primary font-bold text-base leading-none">―</span>
               <span>{item}</span>
             </li>
           ))
@@ -56,9 +76,9 @@ const { data } = Astro.props;
     </div>
   </div>
 
-  <!-- Scroll cue -->
-  <div class="mt-16 flex items-center gap-2.5 text-xs sm:text-sm font-sans italic text-muted">
-    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+  <!-- Scroll cue con punto verde fluorescente -->
+  <div class="mt-14 sm:mt-16 flex items-center gap-2.5 text-xs sm:text-sm font-sans italic text-muted dark:text-[#8E9690]">
+    <span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(57,255,20,0.8)]"></span>
     <span class="hover:text-primary transition-colors cursor-default">{data.scrollCue}</span>
   </div>
 </section>

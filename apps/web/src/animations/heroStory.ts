@@ -21,6 +21,7 @@ export function initHeroStory(): void {
 
   const reduced = prefersReducedMotion();
 
+  const eyebrow = heroRoot.querySelector<HTMLElement>("[data-hero-part='eyebrow']");
   const phraseLead = heroRoot.querySelector<HTMLElement>("[data-hero-part='lead']");
   const subheading = heroRoot.querySelector<HTMLElement>("[data-hero-part='subheading']");
   const desc = heroRoot.querySelector<HTMLElement>("[data-hero-part='desc']");
@@ -28,6 +29,7 @@ export function initHeroStory(): void {
   const bridgeText = document.querySelector<HTMLElement>("[data-story='bridge'] [data-bridge-text]");
 
   if (reduced) {
+    if (eyebrow) eyebrow.style.opacity = "1";
     if (phraseLead) phraseLead.style.opacity = "1";
     if (subheading) subheading.style.opacity = "1";
     if (desc) desc.style.opacity = "1";
@@ -37,15 +39,19 @@ export function initHeroStory(): void {
   }
 
   // Initial states with max 16-20px movement
-  const elements = [phraseLead, subheading, desc, ...observations].filter(Boolean) as HTMLElement[];
+  const elements = [eyebrow, phraseLead, subheading, desc, ...observations].filter(Boolean) as HTMLElement[];
   elements.forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(16px)";
   });
 
   // Timed entrance sequence via Motion
+  if (eyebrow) {
+    animate(eyebrow as any, { opacity: [0, 1], y: [14, 0] } as any, { duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] as any });
+  }
+
   if (phraseLead) {
-    animate(phraseLead as any, { opacity: [0, 1], y: [16, 0] } as any, { duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] as any });
+    animate(phraseLead as any, { opacity: [0, 1], y: [18, 0] } as any, { duration: 0.65, delay: 0.25, ease: [0.16, 1, 0.3, 1] as any });
   }
 
   if (subheading) {
