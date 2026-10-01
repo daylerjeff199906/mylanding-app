@@ -1,5 +1,6 @@
 ---
 import type { SupportedLocale } from "@platform/types";
+import FlagIcon from "./FlagIcon.astro";
 
 interface Props {
   currentLocale: SupportedLocale;
@@ -33,24 +34,7 @@ const currentLang = languages.find((l) => l.code === currentLocale) || languages
     aria-haspopup="listbox"
     aria-label="Seleccionar idioma"
   >
-    <!-- Flag Indicator -->
-    <span class="w-4 h-3 flex items-center justify-center rounded-[2px] overflow-hidden shadow-2xs shrink-0">
-      {currentLang.code === "es" ? (
-        <!-- Spain Flag SVG -->
-        <svg viewBox="0 0 750 500" class="w-full h-full object-cover">
-          <rect width="750" height="500" fill="#c60b1e" />
-          <rect width="750" height="250" y="125" fill="#ffc400" />
-        </svg>
-      ) : (
-        <!-- US Flag SVG -->
-        <svg viewBox="0 0 741 390" class="w-full h-full object-cover">
-          <rect width="741" height="390" fill="#b22234" />
-          <path d="M0,45H741M0,105H741M0,165H741M0,225H741M0,285H741M0,345H741" stroke="#fff" stroke-width="30" />
-          <rect width="296" height="210" fill="#3c3b6e" />
-        </svg>
-      )}
-    </span>
-
+    <FlagIcon code={currentLang.code} />
     <span class="font-bold tracking-wider">{currentLang.label}</span>
 
     <svg
@@ -64,7 +48,7 @@ const currentLang = languages.find((l) => l.code === currentLocale) || languages
     </svg>
   </button>
 
-  <!-- Dropdown Menu -->
+  <!-- Dropdown Menu (Styled for both Light and Dark Mode) -->
   <div
     id="language-dropdown-menu"
     class="hidden absolute right-0 mt-1.5 w-36 rounded-[8px] bg-surface dark:bg-[#161816] border border-border dark:border-white/15 shadow-lg shadow-black/10 dark:shadow-black/40 py-1 z-50 transition-all font-mono text-xs"
@@ -86,20 +70,7 @@ const currentLang = languages.find((l) => l.code === currentLocale) || languages
             }`}
           >
             <div class="flex items-center gap-2.5">
-              <span class="w-4 h-3 flex items-center justify-center rounded-[2px] overflow-hidden shadow-2xs shrink-0">
-                {lang.code === "es" ? (
-                  <svg viewBox="0 0 750 500" class="w-full h-full object-cover">
-                    <rect width="750" height="500" fill="#c60b1e" />
-                    <rect width="750" height="250" y="125" fill="#ffc400" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 741 390" class="w-full h-full object-cover">
-                    <rect width="741" height="390" fill="#b22234" />
-                    <path d="M0,45H741M0,105H741M0,165H741M0,225H741M0,285H741M0,345H741" stroke="#fff" stroke-width="30" />
-                    <rect width="296" height="210" fill="#3c3b6e" />
-                  </svg>
-                )}
-              </span>
+              <FlagIcon code={lang.code} />
               <span>{lang.name}</span>
             </div>
 
