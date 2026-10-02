@@ -6,68 +6,88 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+const fullName = data.fullName || "Soy José Jefferson Santos";
+const degree = data.degree || "Egresado de Ingeniería de Sistemas e Informática";
+const statementLead = data.statementLead || (data.lead ?? "");
+const statementBody = data.statementBody || (data.subtitle ?? "");
+const statementImpact = data.statementImpact || "";
 ---
 
 <section
-  id="areas"
+  id="contexto"
   data-story="areas"
-  class="py-32 container-editorial"
+  class="py-24 sm:py-32 container-editorial select-text border-t border-border/70 dark:border-white/10"
 >
-  <div class="space-y-16">
-    <div class="space-y-4 max-w-3xl">
-      {data.sectionTag && (
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
-            // {data.sectionTag}
-          </span>
-        </div>
-      )}
-
-      <!-- Section lead with Anton display -->
+  <div class="space-y-12 sm:space-y-16">
+    <!-- Encabezado de Alto Impacto (Inspirado en la tipografía masiva HI, I'M JOE) -->
+    <div class="space-y-4 max-w-5xl">
       <h2
         data-areas-lead
-        class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]"
+        class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6.25rem] font-display uppercase tracking-tight text-ink dark:text-[#FAF7EE] leading-[0.92]"
       >
-        {data.lead}
+        {fullName}
       </h2>
 
-      <p class="text-base font-sans text-muted max-w-xl">
-        {data.subtitle}
+      <p
+        data-area-item
+        class="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-bold pt-1"
+      >
+        // {degree}
       </p>
     </div>
 
-    <!-- Typographic composition (open sections, thin separators, no bulky boxes) -->
-    <div class="py-8">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-14 items-baseline">
-        {
-          data.items.map((item, index) => {
-            // Placement variations to maintain editorial rhythm
-            const colSpan = index === 2 ? "md:col-start-3 md:col-span-8 md:text-center" : "md:col-span-6";
+    <!-- Composición Editorial de Lectura (Inspirada en el layout de bio editorial Anton Repponen) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pt-8 border-t border-border/60 dark:border-white/10">
+      <!-- Columna izquierda: Contexto & Enfoque -->
+      <div class="lg:col-span-4 space-y-6">
+        <div data-area-item class="space-y-2">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted dark:text-[#949E97]">
+            Enfoque
+          </span>
+          <p class="font-sans text-sm sm:text-base text-ink dark:text-white font-medium leading-relaxed">
+            Arquitectura de Software · UX & Frontend · Optimización de Procesos
+          </p>
+        </div>
 
-            return (
-              <div data-area-item class={`${colSpan} group`}>
-                <div class="border-b border-border dark:border-white/10 pb-4 transition-colors group-hover:border-primary">
-                  <div class="flex items-baseline gap-2 mb-1">
-                    <span class="text-xs font-mono text-primary font-bold">
-                      {item.number}
-                    </span>
-                    <span class="text-xs font-mono text-muted uppercase">
-                      / Contexto
-                    </span>
-                  </div>
+        <div data-area-item class="space-y-2">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted dark:text-[#949E97]">
+            Sectores de Participación
+          </span>
+          <p class="font-sans text-sm sm:text-base text-muted dark:text-[#949E97] leading-relaxed">
+            Educación · Salud · Gestión institucional · Productos digitales · Impacto ambiental
+          </p>
+        </div>
+      </div>
 
-                  <h3 class="text-3xl sm:text-4xl font-display uppercase tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
-                    {item.name}
-                  </h3>
+      <!-- Columna derecha: Narrativa personal en tipografía editorial fluida -->
+      <div class="lg:col-span-8 space-y-6 sm:space-y-8">
+        {statementLead && (
+          <p
+            data-area-item
+            class="text-xl sm:text-2xl md:text-[1.625rem] font-sans font-medium text-ink dark:text-white leading-[1.38] tracking-tight"
+          >
+            {statementLead}
+          </p>
+        )}
 
-                  <p class="text-xs sm:text-sm font-sans text-muted mt-2">
-                    {item.tagline}
-                  </p>
-                </div>
-              </div>
-            );
-          })
-        }
+        {statementBody && (
+          <p
+            data-area-item
+            class="text-base sm:text-lg font-sans text-muted dark:text-[#949E97] leading-relaxed"
+          >
+            {statementBody}
+          </p>
+        )}
+
+        {statementImpact && (
+          <p
+            data-area-item
+            class="text-base sm:text-lg font-sans text-ink/90 dark:text-white/90 leading-relaxed pl-5 border-l-2 border-primary"
+          >
+            {statementImpact}
+          </p>
+        )}
       </div>
     </div>
   </div>

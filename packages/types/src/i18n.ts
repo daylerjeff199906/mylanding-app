@@ -66,9 +66,14 @@ export interface I18nAreaItem {
 
 export interface I18nAreas {
   sectionTag?: string;
-  lead: string;
-  subtitle: string;
-  items: I18nAreaItem[];
+  fullName?: string;
+  degree?: string;
+  statementLead?: string;
+  statementBody?: string;
+  statementImpact?: string;
+  lead?: string;
+  subtitle?: string;
+  items?: I18nAreaItem[];
 }
 
 export interface I18nProjectItem {

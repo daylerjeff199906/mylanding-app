@@ -63,47 +63,12 @@ export const esDictionary: I18nDictionary = {
     ]
   },
   areas: {
-    sectionTag: "Contextos y áreas",
-    lead: "He podido aportar en problemas muy distintos.",
-    subtitle: "Campos donde he participado sin pretender una especialización absoluta.",
-    items: [
-      {
-        id: "educacion",
-        number: "01",
-        name: "Educación",
-        tagline: "Plataformas de aprendizaje y seguimiento estudiantil"
-      },
-      {
-        id: "salud",
-        number: "02",
-        name: "Salud",
-        tagline: "Sistemas clínicos y reducción de fricción en atención"
-      },
-      {
-        id: "datos",
-        number: "03",
-        name: "Datos",
-        tagline: "Modelado analítico e interfaces sin ruido visual"
-      },
-      {
-        id: "gestion",
-        number: "04",
-        name: "Gestión",
-        tagline: "Optimización de flujos de trabajo e interconexión interna"
-      },
-      {
-        id: "procesos",
-        number: "05",
-        name: "Procesos institucionales",
-        tagline: "Modernización de trámites, admisiones y desmonte de burocracia"
-      },
-      {
-        id: "productos",
-        number: "06",
-        name: "Productos digitales",
-        tagline: "Arquitectura frontend, interfaces limpias y storytelling"
-      }
-    ]
+    sectionTag: "Perfil",
+    fullName: "Soy José Jefferson Santos",
+    degree: "Egresado de Ingeniería de Sistemas e Informática",
+    statementLead: "Me dedico al desarrollo de software, pero mi trabajo no empieza únicamente escribiendo código. Me gusta entender cómo funciona un proceso, detectar qué puede mejorarse y convertir esas ideas en productos digitales que sean más simples de usar y mantener.",
+    statementBody: "He participado en proyectos relacionados con educación, salud, gestión institucional, productos digitales e iniciativas con impacto ambiental, trabajando desde la experiencia de usuario y la arquitectura frontend hasta la implementación de funcionalidades y mejora de procesos.",
+    statementImpact: "Me interesa especialmente construir tecnología que no solo funcione, sino que resuelva mejor, reduzca fricción y genere un impacto positivo en las personas y su entorno."
   },
   projects: {
     sectionTag: "Proyectos destacados",
