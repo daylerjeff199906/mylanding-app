@@ -37,7 +37,7 @@ export const narrativeContent = {
   areas: {
     titlePrefix: "Soy",
     titleName: "JOSÉ JEFFERSON SANTOS",
-    statementLead: "Egresado de Ingeniería de Sistemas e Informática. Me dedico al desarrollo de software, pero mi trabajo no empieza únicamente escribiendo código. Me gusta entender cómo funciona un proceso, detectar qué puede mejorarse y convertir esas ideas en productos digitales que sean más simples de usar y mantener.",
+    statementLead: "Bachiller de **Ingeniería de Sistemas e Informática**. Desarrollo software enfocado en **entender procesos, detectar mejoras y convertir ideas en productos digitales simples, útiles y sostenibles.**",
     dedicationTitle: "A lo que me dedico",
     dedicationText: "Desarrollo de software, experiencia de usuario (UX), arquitectura frontend, implementación de funcionalidades y optimización de procesos.",
     areasTitle: "Áreas en las que participo",

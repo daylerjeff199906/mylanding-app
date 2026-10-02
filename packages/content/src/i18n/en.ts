@@ -66,7 +66,7 @@ export const enDictionary: I18nDictionary = {
     sectionTag: "Profile",
     titlePrefix: "I am",
     titleName: "JOSÉ JEFFERSON SANTOS",
-    statementLead: "Systems and Computer Engineering graduate. I dedicate myself to software development, but my work does not begin solely with writing code. I like understanding how a process works, detecting what can be improved, and turning those ideas into digital products that are simpler to use and maintain.",
+    statementLead: "Bachelor of **Systems and Computer Engineering**. I build software focused on **understanding processes, spotting improvements, and turning ideas into simple, useful, and sustainable digital products.**",
     dedicationTitle: "What I do",
     dedicationText: "Software development, user experience (UX), frontend architecture, feature implementation, and process optimization.",
     areasTitle: "Areas of involvement",
