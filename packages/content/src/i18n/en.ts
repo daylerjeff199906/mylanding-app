@@ -64,11 +64,15 @@ export const enDictionary: I18nDictionary = {
   },
   areas: {
     sectionTag: "Profile",
-    fullName: "I am José Jefferson Santos",
-    degree: "Systems and Computer Engineering Graduate",
-    statementLead: "I dedicate myself to software development, but my work does not begin solely with writing code. I like understanding how a process works, detecting what can be improved, and turning those ideas into digital products that are simpler to use and maintain.",
-    statementBody: "I have participated in projects related to education, healthcare, institutional management, digital products, and environmental impact initiatives, working from user experience and frontend architecture to feature implementation and process improvement.",
-    statementImpact: "I am especially interested in building technology that not only works, but solves better, reduces friction, and generates a positive impact on people and their surroundings."
+    titlePrefix: "I am",
+    titleName: "JOSÉ JEFFERSON SANTOS",
+    statementLead: "Systems and Computer Engineering graduate. I dedicate myself to software development, but my work does not begin solely with writing code. I like understanding how a process works, detecting what can be improved, and turning those ideas into digital products that are simpler to use and maintain.",
+    dedicationTitle: "What I do",
+    dedicationText: "Software development, user experience (UX), frontend architecture, feature implementation, and process optimization.",
+    areasTitle: "Areas of involvement",
+    areasList: "Education · Healthcare · Data · Institutional management · Digital products · Environmental impact",
+    statementImpact: "I am especially interested in building technology that not only works, but solves better, reduces friction, and generates a positive impact on people and their surroundings.",
+    imageAlt: "José Jefferson Santos - Editorial portrait"
   },
   projects: {
     sectionTag: "Featured Projects",

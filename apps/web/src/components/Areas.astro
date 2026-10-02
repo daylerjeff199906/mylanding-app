@@ -7,11 +7,16 @@ interface Props {
 
 const { data } = Astro.props;
 
-const fullName = data.fullName || "Soy José Jefferson Santos";
-const degree = data.degree || "Egresado de Ingeniería de Sistemas e Informática";
+const titlePrefix = data.titlePrefix || "Soy";
+const titleName = data.titleName || "JOSÉ JEFFERSON SANTOS";
 const statementLead = data.statementLead || (data.lead ?? "");
-const statementBody = data.statementBody || (data.subtitle ?? "");
+const dedicationTitle = data.dedicationTitle || "A lo que me dedico";
+const dedicationText = data.dedicationText || "Desarrollo de software, experiencia de usuario (UX), arquitectura frontend, implementación de funcionalidades y optimización de procesos.";
+const areasTitle = data.areasTitle || "Áreas en las que participo";
+const areasList = data.areasList || "Educación · Salud · Datos · Gestión institucional · Productos digitales · Impacto ambiental";
 const statementImpact = data.statementImpact || "";
+const imageSrc = data.imageSrc || "/images/profile-portrait.jpg";
+const imageAlt = data.imageAlt || "José Jefferson Santos";
 ---
 
 <section
@@ -19,66 +24,53 @@ const statementImpact = data.statementImpact || "";
   data-story="areas"
   class="py-24 sm:py-32 container-editorial select-text border-t border-border/70 dark:border-white/10"
 >
-  <div class="space-y-12 sm:space-y-16">
-    <!-- Encabezado de Alto Impacto (Inspirado en la tipografía masiva HI, I'M JOE) -->
-    <div class="space-y-4 max-w-5xl">
-      <h2
-        data-areas-lead
-        class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6.25rem] font-display uppercase tracking-tight text-ink dark:text-[#FAF7EE] leading-[0.92]"
-      >
-        {fullName}
-      </h2>
-
-      <p
-        data-area-item
-        class="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-bold pt-1"
-      >
-        // {degree}
-      </p>
-    </div>
-
-    <!-- Composición Editorial de Lectura (Inspirada en el layout de bio editorial Anton Repponen) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pt-8 border-t border-border/60 dark:border-white/10">
-      <!-- Columna izquierda: Contexto & Enfoque -->
-      <div class="lg:col-span-4 space-y-6">
-        <div data-area-item class="space-y-2">
-          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted dark:text-[#949E97]">
-            Enfoque
-          </span>
-          <p class="font-sans text-sm sm:text-base text-ink dark:text-white font-medium leading-relaxed">
-            Arquitectura de Software · UX & Frontend · Optimización de Procesos
-          </p>
-        </div>
-
-        <div data-area-item class="space-y-2">
-          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted dark:text-[#949E97]">
-            Sectores de Participación
-          </span>
-          <p class="font-sans text-sm sm:text-base text-muted dark:text-[#949E97] leading-relaxed">
-            Educación · Salud · Gestión institucional · Productos digitales · Impacto ambiental
-          </p>
-        </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <!-- Columna izquierda: Título en 2 líneas y contenido editorial fluido -->
+    <div class="lg:col-span-7 xl:col-span-7 space-y-10 sm:space-y-12">
+      <!-- Título de Alto Impacto: "Soy" en fuente normal y pequeña, nombre en tipografía display -->
+      <div class="space-y-1 sm:space-y-2">
+        <span class="font-sans font-normal text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] text-muted dark:text-[#949E97] tracking-tight block">
+          {titlePrefix}
+        </span>
+        <h2
+          data-areas-lead
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6.75rem] font-display uppercase tracking-tight text-ink dark:text-[#FAF7EE] leading-[0.92]"
+        >
+          {titleName}
+        </h2>
       </div>
 
-      <!-- Columna derecha: Narrativa personal en tipografía editorial fluida -->
-      <div class="lg:col-span-8 space-y-6 sm:space-y-8">
+      <!-- Párrafos narrativos continuos y estructuración de áreas -->
+      <div class="space-y-8 sm:space-y-10 max-w-2xl">
         {statementLead && (
           <p
             data-area-item
-            class="text-xl sm:text-2xl md:text-[1.625rem] font-sans font-medium text-ink dark:text-white leading-[1.38] tracking-tight"
+            class="text-lg sm:text-xl md:text-[1.325rem] font-sans font-medium text-ink dark:text-white leading-[1.45] tracking-tight"
           >
             {statementLead}
           </p>
         )}
 
-        {statementBody && (
-          <p
-            data-area-item
-            class="text-base sm:text-lg font-sans text-muted dark:text-[#949E97] leading-relaxed"
-          >
-            {statementBody}
-          </p>
-        )}
+        <!-- A lo que me dedico y Áreas en las que participo -->
+        <div data-area-item class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border/60 dark:border-white/10">
+          <div class="space-y-2">
+            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary block">
+              // {dedicationTitle}
+            </span>
+            <p class="font-sans text-sm sm:text-base text-ink dark:text-white leading-relaxed font-medium">
+              {dedicationText}
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-muted dark:text-[#949E97] block">
+              // {areasTitle}
+            </span>
+            <p class="font-sans text-sm sm:text-base text-muted dark:text-[#949E97] leading-relaxed">
+              {areasList}
+            </p>
+          </div>
+        </div>
 
         {statementImpact && (
           <p
@@ -88,6 +80,37 @@ const statementImpact = data.statementImpact || "";
             {statementImpact}
           </p>
         )}
+      </div>
+    </div>
+
+    <!-- Columna derecha: Espacio dedicado para la imagen editorial -->
+    <div
+      data-area-item
+      class="lg:col-span-5 xl:col-span-5 w-full flex justify-center lg:justify-end lg:sticky lg:top-28"
+    >
+      <div class="relative w-full max-w-md lg:max-w-none group">
+        <!-- Halo sutil en hover -->
+        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-primary/20 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+
+        <div class="relative overflow-hidden rounded-xl border border-border/80 dark:border-white/10 bg-surface dark:bg-[#151815] shadow-sm">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            width="600"
+            height="800"
+            loading="lazy"
+            class="w-full h-auto aspect-[3/4] object-cover object-center grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-500"
+          />
+
+          <!-- Leyenda editorial flotante inferior -->
+          <div class="absolute bottom-3.5 left-3.5 right-3.5 py-1.5 px-3 rounded-md bg-dark/80 dark:bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-between text-[11px] font-mono text-white/90 select-none">
+            <span class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              <span class="font-semibold tracking-wider">JEFF SANTOS</span>
+            </span>
+            <span class="text-white/60 tracking-wider">SOFTWARE & UX</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

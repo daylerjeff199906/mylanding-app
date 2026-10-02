@@ -35,10 +35,13 @@ export const narrativeContent = {
     ]
   },
   areas: {
-    fullName: "Soy José Jefferson Santos",
-    degree: "Egresado de Ingeniería de Sistemas e Informática",
-    statementLead: "Me dedico al desarrollo de software, pero mi trabajo no empieza únicamente escribiendo código. Me gusta entender cómo funciona un proceso, detectar qué puede mejorarse y convertir esas ideas en productos digitales que sean más simples de usar y mantener.",
-    statementBody: "He participado en proyectos relacionados con educación, salud, gestión institucional, productos digitales e iniciativas con impacto ambiental, trabajando desde la experiencia de usuario y la arquitectura frontend hasta la implementación de funcionalidades y mejora de procesos.",
+    titlePrefix: "Soy",
+    titleName: "JOSÉ JEFFERSON SANTOS",
+    statementLead: "Egresado de Ingeniería de Sistemas e Informática. Me dedico al desarrollo de software, pero mi trabajo no empieza únicamente escribiendo código. Me gusta entender cómo funciona un proceso, detectar qué puede mejorarse y convertir esas ideas en productos digitales que sean más simples de usar y mantener.",
+    dedicationTitle: "A lo que me dedico",
+    dedicationText: "Desarrollo de software, experiencia de usuario (UX), arquitectura frontend, implementación de funcionalidades y optimización de procesos.",
+    areasTitle: "Áreas en las que participo",
+    areasList: "Educación · Salud · Datos · Gestión institucional · Productos digitales · Impacto ambiental",
     statementImpact: "Me interesa especialmente construir tecnología que no solo funcione, sino que resuelva mejor, reduzca fricción y genere un impacto positivo en las personas y su entorno."
   },
   projects: {

@@ -66,11 +66,19 @@ export interface I18nAreaItem {
 
 export interface I18nAreas {
   sectionTag?: string;
+  titlePrefix?: string;
+  titleName?: string;
   fullName?: string;
   degree?: string;
   statementLead?: string;
   statementBody?: string;
   statementImpact?: string;
+  dedicationTitle?: string;
+  dedicationText?: string;
+  areasTitle?: string;
+  areasList?: string;
+  imageSrc?: string;
+  imageAlt?: string;
   lead?: string;
   subtitle?: string;
   items?: I18nAreaItem[];
