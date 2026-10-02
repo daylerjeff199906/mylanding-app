@@ -10,16 +10,10 @@ Todos los archivos han sido construidos con geometría vectorial pura (SVG), opt
 
 | Archivo | Tipo | Tamaño / ViewBox | Uso recomendado |
 | :--- | :--- | :--- | :--- |
-| **[`isotipo.svg`](./isotipo.svg)** | Isotipo Principal (Dark) | `64 × 64` | Avatar para redes, perfiles, fondos oscuros |
-| **[`isotipo-light.svg`](./isotipo-light.svg)** | Isotipo (Light Warm) | `64 × 64` | Fondos claros, papelería, fondo editorial `#F7F1E3` |
-| **[`isotipo-monochrome.svg`](./isotipo-monochrome.svg)** | Isotipo Monocromático | `64 × 64` | Impresión a una tinta, sellos, grabado |
-| **[`logo-horizontal-dark.svg`](./logo-horizontal-dark.svg)** | Logotipo Horizontal (Dark) | `320 × 64` | Headers oscuros, presentaciones, decks |
-| **[`logo-horizontal-light.svg`](./logo-horizontal-light.svg)** | Logotipo Horizontal (Light) | `320 × 64` | Headers claros, documentos, facturas |
-| **[`logo-vertical.svg`](./logo-vertical.svg)** | Logotipo Vertical (Stack) | `200 × 180` | Portadas centradas, posters, splash screens |
-| **[`favicon.svg`](./favicon.svg)** | Favicon Web Escalable | `64 × 64` | Pestaña del navegador (vectorial nítido) |
-| **[`apple-touch-icon.svg`](./apple-touch-icon.svg)** | Icono Web App / iOS | `180 × 180` | Pantalla de inicio de iPhone / iPad / Android |
-| **[`og-image.svg`](./og-image.svg)** | Open Graph Banner | `1200 × 630` | Previsualización en LinkedIn, Twitter/X, WhatsApp |
-| **[`brand-assets.json`](./brand-assets.json)** | Manifiesto de Marca | JSON | Metadatos legibles por código y APIs futuras |
+| **[`logo-js.svg`](./logo-js.svg)** | Logotipo / Isotipo Principal | `1254 × 1254` | Logotipo oficial vectorizado, cabeceras, pie de página |
+| **[`logo-js-favicon.svg`](./logo-js-favicon.svg)** | Favicon Web Escalable | `256 × 256` | Pestaña del navegador y marcadores |
+| **[`favicon.svg`](../favicon.svg)** | Favicon en Raíz | `256 × 256` | Acceso directo /favicon.svg |
+| **[`brand-assets.json`](./brand-assets.json)** | Manifiesto de Marca | JSON | Metadatos y registro de activos del sistema |
 
 ---
 

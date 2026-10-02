@@ -50,67 +50,25 @@
   },
   "assets": [
     {
-      "id": "isotipo-dark",
-      "path": "/brand/isotipo.svg",
+      "id": "logo-js",
+      "path": "/brand/logo-js.svg",
       "type": "image/svg+xml",
-      "viewBox": "0 0 64 64",
-      "usage": "Primary avatar, social profiles, dark backgrounds"
-    },
-    {
-      "id": "isotipo-light",
-      "path": "/brand/isotipo-light.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 64 64",
-      "usage": "Light backgrounds, stationery, warm paper"
-    },
-    {
-      "id": "isotipo-monochrome",
-      "path": "/brand/isotipo-monochrome.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 64 64",
-      "usage": "Single-color printing, laser engrave, stamps"
-    },
-    {
-      "id": "logo-horizontal-dark",
-      "path": "/brand/logo-horizontal-dark.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 320 64",
-      "usage": "Dark website headers, slide decks, wide banners"
-    },
-    {
-      "id": "logo-horizontal-light",
-      "path": "/brand/logo-horizontal-light.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 320 64",
-      "usage": "Light website headers, invoices, white backgrounds"
-    },
-    {
-      "id": "logo-vertical",
-      "path": "/brand/logo-vertical.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 200 180",
-      "usage": "Centered covers, hero splash, posters"
+      "viewBox": "0 0 1254 1254",
+      "usage": "Logotipo e Isotipo principal vectorizado, cabeceras, pie de página y aplicaciones visuales"
     },
     {
       "id": "favicon",
+      "path": "/brand/logo-js-favicon.svg",
+      "type": "image/svg+xml",
+      "viewBox": "0 0 256 256",
+      "usage": "Favicon principal optimizado para pestañas y marcadores de navegador"
+    },
+    {
+      "id": "favicon-root",
       "path": "/favicon.svg",
       "type": "image/svg+xml",
-      "viewBox": "0 0 64 64",
-      "usage": "Browser tab icon (supports high-DPI scaling)"
-    },
-    {
-      "id": "apple-touch-icon",
-      "path": "/brand/apple-touch-icon.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 180 180",
-      "usage": "iOS Home screen, PWA web app icon"
-    },
-    {
-      "id": "og-image",
-      "path": "/brand/og-image.svg",
-      "type": "image/svg+xml",
-      "viewBox": "0 0 1200 630",
-      "usage": "Social media preview (OpenGraph, Twitter cards)"
+      "viewBox": "0 0 256 256",
+      "usage": "Favicon estático en raíz del dominio"
     }
   ]
 }

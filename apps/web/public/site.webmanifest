@@ -8,18 +8,18 @@
   "theme_color": "#101210",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/brand/logo-js-favicon.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/brand/logo-js.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     },
     {
-      "src": "/brand/isotipo.svg",
-      "sizes": "64x64",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/brand/apple-touch-icon.svg",
-      "sizes": "180x180",
+      "src": "/favicon.svg",
+      "sizes": "any",
       "type": "image/svg+xml"
     }
   ]

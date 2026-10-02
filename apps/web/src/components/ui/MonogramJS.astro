@@ -8,23 +8,16 @@ interface Props {
 const { size = "md", variant = "primary", class: className = "" } = Astro.props;
 
 const dimensions = {
-  sm: "w-6 h-6 text-xs",
-  md: "w-8 h-8 text-sm",
-  lg: "w-11 h-11 text-lg"
+  sm: "w-7 h-7 sm:w-8 sm:h-8",
+  md: "w-8 h-8 sm:w-9 sm:h-9",
+  lg: "w-11 h-11"
 }[size];
 ---
 
-<div
-  class={`relative inline-flex items-center justify-center font-display tracking-tighter select-none rounded-[6px] transition-transform duration-300 ${dimensions} ${
-    variant === "primary"
-      ? "bg-ink text-white dark:bg-dark dark:text-white border border-border/80 dark:border-border/30"
-      : "bg-transparent text-ink dark:text-white border border-current"
-  } ${className}`}
-  aria-label="Isotipo JS - JEFF Santos"
->
-  <span class="relative z-10 flex items-center justify-center font-bold leading-none font-display">
-    <span class="text-white dark:text-white">J</span>
-    <span class="text-primary font-display ml-[-1px]">S</span>
-  </span>
-  <span class="absolute bottom-1 right-1 w-1 h-1 rounded-full bg-primary"></span>
-</div>
+<img
+  src="/brand/logo-js.svg"
+  alt="JS Logo"
+  width="32"
+  height="32"
+  class={`rounded-[6px] object-contain select-none transition-transform duration-200 ${dimensions} ${className}`}
+/>

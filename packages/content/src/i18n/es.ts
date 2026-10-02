@@ -22,7 +22,7 @@ export const esDictionary: I18nDictionary = {
     contact: "Contacto"
   },
   hero: {
-    eyebrow: "Software · Arquitectura · Experiencia",
+    eyebrow: "Producto · Tecnología · Experiencia",
     headline: "¿Y si lo simple nos acercara a lo que necesitamos?",
     headlineLead: "¿Y si lo simple",
     headlineAccent: "nos acercara a lo que necesitamos?",
