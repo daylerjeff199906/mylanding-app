@@ -6,10 +6,8 @@ import TransitionBridge from "../components/TransitionBridge.astro";
 import ChapterTwo from "../components/ChapterTwo.astro";
 import Areas from "../components/Areas.astro";
 import Projects from "../components/Projects.astro";
-import Solutions from "../components/Solutions.astro";
 import Institutions from "../components/Institutions.astro";
 import Talks from "../components/Talks.astro";
-import ActivityTimeline from "../components/ActivityTimeline.astro";
 import NowSection from "../components/NowSection.astro";
 
 // Load dynamic dictionary (ready to bridge with DB / CMS API in the future)
@@ -26,9 +24,7 @@ const dict = getDictionary("es");
   <ChapterTwo data={dict.chapterTwo} />
   <Areas data={dict.areas} />
   <Projects data={dict.projects} />
-  <Solutions data={dict.solutions} />
   <Institutions data={dict.institutions} />
   <Talks data={dict.talks} />
-  <ActivityTimeline data={dict.activities} />
   <NowSection data={dict.now} />
 </Layout>
