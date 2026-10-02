@@ -38,14 +38,23 @@ export interface I18nBridge {
   quote: string;
 }
 
+export interface I18nMethodStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
 export interface I18nChapterTwo {
   sectionTag?: string;
-  phraseOne: string;
-  phraseTwo: string;
-  toolPhrase: string;
-  realProjectsPhrase: string;
-  principleTag: string;
-  keyPrinciple: string;
+  title?: string;
+  subtitle?: string;
+  steps?: I18nMethodStep[];
+  phraseOne?: string;
+  phraseTwo?: string;
+  toolPhrase?: string;
+  realProjectsPhrase?: string;
+  principleTag?: string;
+  keyPrinciple?: string;
 }
 
 export interface I18nAreaItem {

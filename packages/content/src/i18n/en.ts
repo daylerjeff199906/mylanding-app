@@ -42,12 +42,25 @@ export const enDictionary: I18nDictionary = {
   },
   chapterTwo: {
     sectionTag: "The Method",
-    phraseOne: "First, I wanted to know how things worked.",
-    phraseTwo: "Then, I wanted to know how to improve them.",
-    toolPhrase: "Learning to code gave me a tool.",
-    realProjectsPhrase: "Yet participating in real projects taught me something far more important:",
-    principleTag: "Core Principle",
-    keyPrinciple: "Before building, you must understand."
+    title: "From understanding the problem to building the solution",
+    subtitle: "A structured three-stage framework to turn complexity into clarity, intuitive flows, and functional digital products.",
+    steps: [
+      {
+        step: "01",
+        title: "1. Understand",
+        description: "Observe the context, listen to people, and identify what is truly hindering the user experience."
+      },
+      {
+        step: "02",
+        title: "2. Simplify",
+        description: "Turn complex problems into clearer flows, simpler decisions, and easy-to-use solutions."
+      },
+      {
+        step: "03",
+        title: "3. Build",
+        description: "Transform those ideas into functional, measurable digital products ready to evolve."
+      }
+    ]
   },
   areas: {
     sectionTag: "Contexts & Areas",

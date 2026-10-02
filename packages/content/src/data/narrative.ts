@@ -13,10 +13,26 @@ export const narrativeContent = {
     text: "Con el tiempo entendí que muchas buenas ideas empiezan ahí."
   },
   chapterTwo: {
-    phraseOne: "Primero quería saber cómo funcionaban las cosas.",
-    phraseTwo: "Después quise saber cómo mejorarlas.",
-    toolPhrase: "Aprender a programar me dio una herramienta.",
-    keyPrinciple: "Antes de hacer, hay que entender."
+    sectionTag: "El método",
+    title: "De entender el problema a construir la solución",
+    subtitle: "Un enfoque estructurado en tres momentos clave para transformar la complejidad en claridad y soluciones digitales funcionales.",
+    steps: [
+      {
+        step: "01",
+        title: "1. Entender",
+        description: "Observar el contexto, escuchar a las personas e identificar qué está dificultando realmente la experiencia."
+      },
+      {
+        step: "02",
+        title: "2. Simplificar",
+        description: "Convertir problemas complejos en flujos más claros, decisiones más simples y soluciones fáciles de usar."
+      },
+      {
+        step: "03",
+        title: "3. Construir",
+        description: "Transformar esas ideas en productos digitales funcionales, medibles y listos para evolucionar."
+      }
+    ]
   },
   areas: {
     lead: "He podido aportar en problemas muy distintos."

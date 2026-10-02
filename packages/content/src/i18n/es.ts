@@ -42,12 +42,25 @@ export const esDictionary: I18nDictionary = {
   },
   chapterTwo: {
     sectionTag: "El método",
-    phraseOne: "Primero quería saber cómo funcionaban las cosas.",
-    phraseTwo: "Después quise saber cómo mejorarlas.",
-    toolPhrase: "Aprender a programar me dio una herramienta.",
-    realProjectsPhrase: "Pero participar en proyectos reales me enseñó algo más importante:",
-    principleTag: "Principio central",
-    keyPrinciple: "Antes de hacer, hay que entender."
+    title: "De entender el problema a construir la solución",
+    subtitle: "Un enfoque estructurado en tres momentos clave para transformar la complejidad en claridad y soluciones digitales funcionales.",
+    steps: [
+      {
+        step: "01",
+        title: "1. Entender",
+        description: "Observar el contexto, escuchar a las personas e identificar qué está dificultando realmente la experiencia."
+      },
+      {
+        step: "02",
+        title: "2. Simplificar",
+        description: "Convertir problemas complejos en flujos más claros, decisiones más simples y soluciones fáciles de usar."
+      },
+      {
+        step: "03",
+        title: "3. Construir",
+        description: "Transformar esas ideas en productos digitales funcionales, medibles y listos para evolucionar."
+      }
+    ]
   },
   areas: {
     sectionTag: "Contextos y áreas",

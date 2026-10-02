@@ -6,68 +6,62 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+const sectionTitle = data.title || "De entender el problema a construir la solución";
+
+const steps = data.steps && data.steps.length > 0
+  ? data.steps
+  : [
+      {
+        step: "01",
+        title: "1. Entender",
+        description: "Observar el contexto, escuchar a las personas e identificar qué está dificultando realmente la experiencia."
+      },
+      {
+        step: "02",
+        title: "2. Simplificar",
+        description: "Convertir problemas complejos en flujos más claros, decisiones más simples y soluciones fáciles de usar."
+      },
+      {
+        step: "03",
+        title: "3. Construir",
+        description: "Transformar esas ideas en productos digitales funcionales, medibles y listos para evolucionar."
+      }
+    ];
 ---
 
 <section
-  id="capitulo-02"
+  id="metodo"
   data-story="chapter-two"
-  class="min-h-[85vh] flex flex-col justify-center container-editorial py-28"
+  class="min-h-[70vh] flex flex-col justify-center container-editorial py-24 sm:py-32 select-text"
 >
-  <div class="space-y-12 max-w-4xl">
-    {data.sectionTag && (
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
-          // {data.sectionTag}
-        </span>
-      </div>
-    )}
-
-    <!-- Sequential statements with Anton & Sora -->
-    <div class="space-y-6">
-      <p
-        data-chapter-part="phrase-1"
-        class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-ink dark:text-white leading-[1.05]"
+  <div class="space-y-16 sm:space-y-20">
+    <!-- Titular principal masivo -->
+    <div class="max-w-4xl">
+      <h2
+        data-chapter-part="title"
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display uppercase tracking-tight text-ink dark:text-[#FAF7EE] leading-[0.92]"
       >
-        {data.phraseOne}
-      </p>
-
-      <p
-        data-chapter-part="phrase-2"
-        class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-muted leading-[1.05]"
-      >
-        {data.phraseTwo}
-      </p>
+        {sectionTitle}
+      </h2>
     </div>
 
-    <!-- Transition into programming tool -->
-    <div class="pt-6 max-w-xl space-y-2">
-      <p
-        data-chapter-part="tool-phrase"
-        class="text-base sm:text-lg font-sans text-ink/80 dark:text-white/80 leading-relaxed font-medium"
-      >
-        {data.toolPhrase}
-      </p>
-      <p class="text-sm font-sans text-muted">
-        {data.realProjectsPhrase}
-      </p>
-    </div>
+    <!-- Procesos sin contenedor: tipografía pura, directa y limpia -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+      {steps.map((stepItem, index) => (
+        <div
+          data-chapter-part={`step-${index + 1}`}
+          class="space-y-4"
+        >
+          <h3 class="text-2xl sm:text-3xl font-sans font-bold tracking-tight text-ink dark:text-white leading-snug">
+            {stepItem.title}
+          </h3>
 
-    <!-- Principle statement with prominent visual weight and geometric border -->
-    <div
-      data-chapter-part="principle"
-      class="pt-8 border-t border-border dark:border-white/10 max-w-3xl"
-    >
-      <div class="relative p-6 sm:p-8 rounded-md bg-surface dark:bg-[#181B18] border-2 border-ink dark:border-white/20 shadow-xs">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="w-2 h-2 rounded-full bg-primary"></span>
-          <span class="text-xs font-mono text-muted uppercase tracking-widest font-semibold">
-            {data.principleTag}
-          </span>
+          <p class="font-sans text-base sm:text-[1.0625rem] text-muted dark:text-[#949E97] leading-relaxed">
+            {stepItem.description}
+          </p>
         </div>
-        <blockquote class="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-tight text-ink dark:text-white leading-none">
-          "{data.keyPrinciple}"
-        </blockquote>
-      </div>
+      ))}
     </div>
   </div>
 </section>
