@@ -1,0 +1,199 @@
+---
+import { getDictionary } from "@platform/content";
+import Layout from "../../layouts/Layout.astro";
+import Contact from "../../components/Contact.astro";
+
+const dict = getDictionary("en");
+const allProjects = dict.projects.allProjects || dict.projects.items;
+
+const categories = [
+  { id: "all", label: "All", count: allProjects.length },
+  {
+    id: "Development & Architecture",
+    label: "Development & Architecture",
+    count: allProjects.filter((p) => p.category === "Development & Architecture").length
+  },
+  {
+    id: "Design & UX",
+    label: "Design & UX",
+    count: allProjects.filter((p) => p.category === "Design & UX").length
+  },
+  {
+    id: "Healthcare & Education",
+    label: "Healthcare & Education",
+    count: allProjects.filter((p) => p.category === "Healthcare & Education").length
+  }
+];
+---
+
+<Layout
+  dict={dict}
+  title="Selected Works & Archive // JEFF Santos"
+  description="Comprehensive archive of digital products, frontend architectures, design systems, and clinical interfaces."
+>
+  <div class="pt-32 pb-24 container-editorial">
+    <!-- Breadcrumb back link -->
+    <div class="pb-10">
+      <a
+        href="/en/#proyectos"
+        class="inline-flex items-center gap-2 text-xs font-mono font-medium text-muted hover:text-ink dark:hover:text-white transition-colors group"
+      >
+        <span class="group-hover:-translate-x-1 transition-transform">←</span>
+        <span>Back to Home</span>
+      </a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="max-w-4xl space-y-6 pb-16 border-b border-border dark:border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+          // COMPLETE ARCHIVE ({allProjects.length} PROJECTS)
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.92]">
+        Selected Works & Archive
+      </h1>
+
+      <p class="text-base sm:text-lg font-sans text-muted max-w-2xl leading-relaxed">
+        A comprehensive portfolio of frontend architectures, accessible design systems,
+        clinical decision platforms, and automation tools built with deep problem understanding.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap gap-2.5 pt-4" id="project-filters">
+        {
+          categories.map((cat, i) => (
+            <button
+              type="button"
+              data-filter={cat.id}
+              class={`project-filter-btn px-5 py-2.5 rounded-full text-xs font-mono transition-all duration-300 border ${
+                i === 0
+                  ? "bg-ink text-white dark:bg-white dark:text-dark border-ink dark:border-white active-filter"
+                  : "bg-surface dark:bg-white/5 text-muted border-border dark:border-white/10 hover:border-ink dark:hover:border-white"
+              }`}
+            >
+              <span>{cat.label}</span>
+              <sup class="ml-1 opacity-70">({cat.count})</sup>
+            </button>
+          ))
+        }
+      </div>
+    </header>
+
+    <!-- Project Rows Archive Table / List -->
+    <section class="divide-y divide-border dark:divide-white/10" id="projects-archive-list">
+      {
+        allProjects.map((project) => {
+          const discipline =
+            project.discipline ||
+            (Array.isArray(project.role) ? project.role.join(" · ") : project.tagline);
+
+          return (
+            <article
+              id={project.id}
+              data-category={project.category || "Others"}
+              class="project-row group py-10 sm:py-14 transition-all duration-300 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] px-2 -mx-2 rounded-sm"
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
+                <!-- Col 1: Number + Title (lg:col-span-5) -->
+                <div class="lg:col-span-5 space-y-2">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-primary">
+                      {project.number}
+                    </span>
+                    <span class="text-xs font-mono text-muted uppercase">
+                      {project.client || project.tagline}
+                    </span>
+                  </div>
+                  <h2 class="text-2xl sm:text-4xl font-sans font-medium tracking-tight text-ink dark:text-white group-hover:translate-x-2 transition-transform duration-300">
+                    {project.title}
+                  </h2>
+                </div>
+
+                <!-- Col 2: Description & Tags (lg:col-span-4) -->
+                <div class="lg:col-span-4 space-y-3">
+                  <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span class="px-2 py-0.5 text-[10px] font-mono rounded-sm bg-surface dark:bg-white/5 text-muted border border-border dark:border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Col 3: Discipline + Year + Arrow (lg:col-span-3 lg:text-right) -->
+                <div class="lg:col-span-3 flex lg:flex-col lg:items-end justify-between items-baseline gap-2">
+                  <span class="text-xs font-mono font-medium text-ink dark:text-white">
+                    {discipline}
+                  </span>
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono text-muted">
+                      {project.year || "2025"}
+                    </span>
+                    <span class="text-sm font-mono text-muted group-hover:text-primary group-hover:translate-x-1 transition-all">
+                      ↗
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </section>
+
+    <!-- Empty State -->
+    <div id="no-projects-msg" class="hidden py-20 text-center text-muted font-mono text-sm">
+      No projects found for this filter.
+    </div>
+  </div>
+
+  <!-- Contact CTA at the bottom -->
+  {dict.contact && <Contact data={dict.contact} site={dict.site} />}
+</Layout>
+
+<script>
+  function setupProjectFilters() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>(".project-filter-btn");
+    const projectRows = document.querySelectorAll<HTMLElement>(".project-row");
+    const noProjectsMsg = document.getElementById("no-projects-msg");
+
+    if (!filterButtons.length || !projectRows.length) return;
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+
+        filterButtons.forEach((b) => {
+          b.classList.remove("bg-ink", "text-white", "dark:bg-white", "dark:text-dark", "border-ink", "dark:border-white");
+          b.classList.add("bg-surface", "dark:bg-white/5", "text-muted", "border-border", "dark:border-white/10");
+        });
+        btn.classList.add("bg-ink", "text-white", "dark:bg-white", "dark:text-dark", "border-ink", "dark:border-white");
+        btn.classList.remove("bg-surface", "dark:bg-white/5", "text-muted");
+
+        let visibleCount = 0;
+
+        projectRows.forEach((row) => {
+          const category = row.getAttribute("data-category");
+          if (filter === "all" || category === filter) {
+            row.style.display = "";
+            visibleCount++;
+          } else {
+            row.style.display = "none";
+          }
+        });
+
+        if (noProjectsMsg) {
+          noProjectsMsg.classList.toggle("hidden", visibleCount > 0);
+        }
+      });
+    });
+  }
+
+  setupProjectFilters();
+  document.addEventListener("astro:page-load", setupProjectFilters);
+</script>

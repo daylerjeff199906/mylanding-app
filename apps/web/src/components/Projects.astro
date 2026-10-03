@@ -1,19 +1,24 @@
 ---
 import type { I18nProjects } from "@platform/types";
-import { joinTokens } from "@platform/utils";
 
 interface Props {
   data: I18nProjects;
 }
 
 const { data } = Astro.props;
+const isEn = Astro.url.pathname.startsWith("/en");
+const worksHref = isEn ? "/en/work" : "/proyectos";
+
+// Show featured or top 4 projects on home, with total count for the pill
+const displayedProjects = data.items.slice(0, 4);
+const totalCount = data.allProjects ? data.allProjects.length : 11;
 ---
 
 <section
   id="proyectos"
-  class="py-32 container-editorial"
+  class="py-24 sm:py-32 container-editorial"
 >
-  <div class="space-y-24">
+  <div class="space-y-16 sm:space-y-20">
     <!-- Header -->
     <div class="max-w-3xl space-y-4">
       {data.sectionTag && (
@@ -28,106 +33,58 @@ const { data } = Astro.props;
         {data.lead}
       </h2>
 
-      <p class="text-base font-sans text-muted max-w-xl">
+      <p class="text-sm sm:text-base font-sans text-muted max-w-xl">
         {data.subtitle}
       </p>
     </div>
 
-    <!-- 3 Featured Projects (Alternating text | image) -->
-    <div class="space-y-28 sm:space-y-36">
+    <!-- Editorial Minimalist Works List (Dennis Snellenberg Style - Pure Typography) -->
+    <div class="border-b border-border dark:border-white/10">
       {
-        data.items.map((project, index) => {
-          const isReversed = index % 2 === 1;
+        displayedProjects.map((project, index) => {
+          const discipline =
+            project.discipline ||
+            (Array.isArray(project.role) ? project.role.join(" & ") : project.tagline);
 
           return (
-            <article
-              id={project.id}
-              data-project-item
-              class="relative pt-12 border-t border-border dark:border-white/10"
+            <a
+              href={`${worksHref}#${project.id}`}
+              class="group block relative py-10 sm:py-14 md:py-16 border-t border-border dark:border-white/10 transition-all duration-300 no-underline cursor-pointer"
             >
-              <div class={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${isReversed ? "lg:flex-row-reverse" : ""}`}>
-                <!-- Editorial Content Column -->
-                <div class={`lg:col-span-5 space-y-6 ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
-                  <div class="flex items-baseline gap-3">
-                    <span
-                      data-part="number"
-                      class="text-xs font-mono font-bold tracking-widest text-primary bg-ink px-2 py-0.5 rounded-[4px]"
-                    >
-                      {project.number}
-                    </span>
-                    <span class="text-xs font-mono text-muted uppercase font-medium">
-                      / {project.tagline}
-                    </span>
-                  </div>
-
-                  <h3
-                    data-part="title"
-                    class="text-4xl sm:text-5xl font-display uppercase tracking-tight text-ink dark:text-white leading-none"
-                  >
+              <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-6">
+                <!-- Left Column: Title with smooth translation -->
+                <div class="flex items-baseline gap-4 sm:gap-6">
+                  <h3 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-medium tracking-tight text-ink dark:text-white group-hover:translate-x-3 sm:group-hover:translate-x-4 transition-transform duration-300 ease-out">
                     {project.title}
                   </h3>
-
-                  <p
-                    data-part="desc"
-                    class="text-sm sm:text-base font-sans text-ink/80 dark:text-white/80 leading-relaxed"
-                  >
-                    {project.description}
-                  </p>
-
-                  <!-- Role meta with explicit attribution guidelines -->
-                  <div data-part="meta" class="pt-4 border-t border-border dark:border-white/10 space-y-1">
-                    <span class="text-xs font-mono text-muted uppercase tracking-wider block">
-                      {data.roleLabel}
-                    </span>
-                    <p class="text-sm font-sans font-semibold text-ink dark:text-white">
-                      {joinTokens(project.role, " · ")}
-                    </p>
-                  </div>
-
-                  <!-- Tags -->
-                  <div class="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map((tag) => (
-                      <span class="px-2.5 py-1 text-[11px] font-mono rounded-sm bg-surface dark:bg-white/5 text-muted border border-border dark:border-white/10">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <!-- Editorial link with expanding arrow -->
-                  <div class="pt-4">
-                    <a href={project.link || "#"} class="editorial-link">
-                      <span>{data.ctaCase}</span>
-                      <span class="arrow font-sans">→</span>
-                    </a>
-                  </div>
                 </div>
 
-                <!-- Editorial Image Column with geometric radius -->
-                <div class={`lg:col-span-7 ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
-                  <div
-                    data-part="image"
-                    class="group relative overflow-hidden rounded-md bg-surface dark:bg-dark border border-border dark:border-white/10 shadow-xs"
-                  >
-                    <img
-                      src={project.image.src}
-                      alt={project.image.alt}
-                      class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
-                      loading="lazy"
-                    />
-                  </div>
+                <!-- Right Column: Discipline / Category -->
+                <div class="flex items-center gap-3 md:text-right">
+                  <span class="text-xs sm:text-sm font-sans tracking-normal text-muted group-hover:text-ink dark:group-hover:text-white transition-colors duration-300">
+                    {discipline}
+                  </span>
+                  <span class="text-xs font-mono text-muted/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 hidden sm:inline">
+                    ↗
+                  </span>
                 </div>
               </div>
-            </article>
+            </a>
           );
         })
       }
     </div>
 
-    <!-- Discreet View More Projects CTA -->
-    <div class="pt-6 text-center">
-      <a href="#soluciones" class="btn-primary">
-        <span>{data.ctaViewMore}</span>
-        <span>→</span>
+    <!-- Centered Pill Button: "More work ¹¹" / "Más proyectos ¹¹" (Dennis Snellenberg Style) -->
+    <div class="pt-8 sm:pt-14 flex justify-center">
+      <a
+        href={worksHref}
+        class="group inline-flex items-center gap-1.5 px-9 py-4 rounded-full border border-border dark:border-white/20 text-sm font-sans font-normal text-ink dark:text-white hover:border-ink dark:hover:border-white hover:bg-ink hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 shadow-xs active:scale-95 no-underline"
+      >
+        <span>{data.moreWorkLabel || (isEn ? "More work" : "Más proyectos")}</span>
+        <sup class="text-[11px] font-mono font-medium -top-1.5 text-muted group-hover:text-primary dark:group-hover:text-black transition-colors">
+          {totalCount}
+        </sup>
       </a>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import type { I18nDictionary } from "@platform/types";
+import { allProjects, featuredProjects } from "../data/projects";
 
 export const esDictionary: I18nDictionary = {
   locale: "es",
@@ -75,62 +76,15 @@ export const esDictionary: I18nDictionary = {
     imageAlt: "José Jefferson Santos - Retrato editorial"
   },
   projects: {
-    sectionTag: "Proyectos destacados",
-    lead: "Algunos proyectos en los que he sido parte.",
-    subtitle: "Iniciativas reales donde la comprensión del problema guió la arquitectura y la experiencia.",
-    roleLabel: "Mi participación",
+    sectionTag: "Trabajos recientes",
+    lead: "Trabajos & Proyectos Seleccionados",
+    subtitle: "Iniciativas reales donde la comprensión del problema guió la arquitectura y la experiencia de usuario.",
+    roleLabel: "Disciplina",
     ctaCase: "Explorar caso",
-    ctaViewMore: "Ver más proyectos",
-    items: [
-      {
-        id: "medmind",
-        number: "01",
-        title: "MedMind",
-        tagline: "Educación + Salud",
-        description:
-          "Plataforma de entrenamiento clínico y toma de decisiones para residentes médicos. Mi participación se centró en transformar protocolos densos de manuales estáticos en simulaciones interactivas con retroalimentación inmediata.",
-        role: ["Producto", "Desarrollo", "UX"],
-        tags: ["TypeScript", "Motion", "UX Research", "Diseño de Sistemas"],
-        link: "#medmind",
-        image: {
-          src: "/images/project-medmind.svg",
-          alt: "Interfaz editorial del sistema MedMind para aprendizaje clínico"
-        },
-        featured: true
-      },
-      {
-        id: "sigae-core",
-        number: "02",
-        title: "SIGAE Admisiones",
-        tagline: "Gestión + Procesos Institucionales",
-        description:
-          "Modernización integral de la plataforma de admisión y expediente institucional. Aporté en el rediseño de flujos, reduciendo en un 64% los pasos redundantemente requeridos y eliminando el abandono.",
-        role: ["Arquitectura Frontend", "Flujos", "UI Engineering"],
-        tags: ["Turborepo", "Astro", "Tailwind", "Accesibilidad"],
-        link: "#sigae-core",
-        image: {
-          src: "/images/project-sigae.svg",
-          alt: "Panel y flujos de trámite simplificado de admisión institucional"
-        },
-        featured: true
-      },
-      {
-        id: "cortex-analytics",
-        number: "03",
-        title: "Cortex Lens",
-        tagline: "Datos + Productos Digitales",
-        description:
-          "Sistema de exploración de métricas y correlaciones en tiempo real para equipos de operaciones. Trabajé en el diseño de interfaz bajo el principio de que los datos solo tienen valor cuando la visualización no compite con la decisión.",
-        role: ["Diseño de Producto", "Prototipado", "Frontend"],
-        tags: ["Visualización de Datos", "GSAP", "Microinteracciones", "Performance"],
-        link: "#cortex-analytics",
-        image: {
-          src: "/images/project-cortex.svg",
-          alt: "Composición de datos y correlaciones visuales en Cortex Lens"
-        },
-        featured: true
-      }
-    ]
+    ctaViewMore: "Ver todos los proyectos",
+    moreWorkLabel: "Más proyectos",
+    items: featuredProjects,
+    allProjects: allProjects
   },
   solutions: {
     sectionTag: "Soluciones tácticas",
@@ -149,54 +103,63 @@ export const esDictionary: I18nDictionary = {
         title: "Simplificación de flujo de verificación",
         type: "Flujo",
         description:
-          "Reducción de 7 pasos a 2 en la validación de identidad para usuarios no técnicos, eliminando la tasa de abandono en soporte.",
-        impact: "85% menos tickets de asistencia"
+          "Reducción de 7 pasos a 3 mediante validación asíncrona de identidad.",
+        impact: "Disminución del 42% en tasa de abandono en onboarding."
       },
       {
-        id: "pipeline-reportes",
+        id: "pipeline-export",
         number: "02",
-        title: "Script de conciliación de reportes académicos",
+        title: "Generador reactivo de informes",
         type: "Automatización",
         description:
-          "Automatización de generación y cotejo de actas que ahorra 14 horas de labor manual semanal a los coordinadores.",
-        impact: "Ahorro de 14 horas/semana"
+          "Sustitución de reportes manuales en hojas de cálculo por exportación estructurada con un clic.",
+        impact: "Ahorro de ~6 horas semanales por equipo operativo."
       },
       {
-        id: "catalogo-unificado",
+        id: "taxonomia-datos",
         number: "03",
-        title: "Normalización de taxonomía documental",
-        type: "Estructura de Datos",
+        title: "Normalización de nomenclaturas clínicas",
+        type: "Estructura",
         description:
-          "Estructuración coherente de más de 4,000 registros normativos dispersos en carpetas y formatos heterogéneos.",
-        impact: "Búsqueda en <2 segundos"
+          "Glosario unificado y mapeo semántico para evitar duplicidad de diagnósticos en registros hospitalarios.",
+        impact: "Cero discrepancias en auditoría de historias clínicas."
+      },
+      {
+        id: "accesibilidad-core",
+        number: "04",
+        title: "Auditoría y corrección de contraste dinámico",
+        type: "Accesibilidad",
+        description:
+          "Adaptación de paleta a normas WCAG AAA para usuarios con baja visión en entornos clínicos con luz dispar.",
+        impact: "Cumplimiento normativo del 100% en inspección."
       }
     ]
   },
   institutions: {
-    sectionTag: "Contexto y aprendizaje",
-    lead: "He aprendido trabajando en contextos diferentes.",
-    roleLabel: "Rol / Participación",
+    sectionTag: "Contexto",
+    lead: "Lugares donde he aprendido a entender problemas.",
+    roleLabel: "Rol / Periodo",
     items: [
       {
-        id: "unap",
-        name: "Universidad Nacional del Altiplano",
-        role: "Desarrollo e Innovación de Software Académico",
-        area: "Educación Superior y Gestión de Trámites",
-        period: "2023 — Presente",
+        id: "inst-1",
+        name: "Universidad Nacional de la Amazonía Peruana",
+        role: "Desarrollador / Líder Técnico Frontend",
+        area: "Dirección de Tecnologías de Información",
+        period: "2023 — 2025",
         context:
-          "Diseño y desarrollo de plataformas institucionales de admisión, posgrado y matrícula que atienden a decenas de miles de postulantes y estudiantes."
+          "Liderazgo en la reingeniería del sistema de admisiones y gestión curricular. Implementación de monorepos y estándares de accesibilidad para más de 12,000 postulantes."
       },
       {
-        id: "minsa-red",
-        name: "Red de Salud & Servicios Clínicos",
-        role: "Consultoría de Experiencia y Flujos Digitales",
-        area: "Salud Pública",
-        period: "2024",
+        id: "inst-2",
+        name: "Red de Salud Regional Loreto",
+        role: "Consultor de Experiencia y Sistemas Clínicos",
+        area: "Transformación Digital en Salud",
+        period: "2024 — Presente",
         context:
-          "Auditoría y rediseño de interfaz en módulos de triaje y admisión de historias clínicas para reducir tiempos de espera en ventanilla."
+          "Diagnóstico de flujos hospitalarios y diseño de interfaces simplificadas para personal asistencial en postas médicas de zonas periféricas."
       },
       {
-        id: "lab-investigacion",
+        id: "inst-3",
         name: "Laboratorio de Informática y Ciencia de Datos",
         role: "Investigador / Desarrollador Frontend",
         area: "Investigación Aplicada",
@@ -207,38 +170,80 @@ export const esDictionary: I18nDictionary = {
     ]
   },
   talks: {
-    sectionTag: "Divulgación",
-    lead: "Lo que aprendo también quiero compartirlo.",
+    sectionTag: "Visión & Presentaciones",
+    lead: "Compartiendo ideas, debatiendo el futuro y creando impacto.",
+    subtitle:
+      "Creo firmemente que el software de calidad no nace de seguir tendencias a ciegas, sino de comprender profundamente la fricción humana y liderar con rigor arquitectónico.",
+    manifestoQuote:
+      "Aspiro a liderar equipos donde la arquitectura técnica conviva con la empatía humana: sistemas robustos por dentro, invisibles y calmos por fuera.",
+    manifestoAuthor: "JEFF Santos · Visión Profesional",
+    visionTitle: "Hacia dónde voy // Lo que busco construir",
+    visionPillars: [
+      {
+        number: "01",
+        title: "Arquitectura de Software & Liderazgo Técnico",
+        desc: "Diseñar la columna vertebral de plataformas institucionales que atiendan a millones de personas sin interrupciones ni perder coherencia estética."
+      },
+      {
+        number: "02",
+        title: "Divulgador & Mentor de Producto",
+        desc: "Llevar la conversación técnica más allá de las sintaxis: enfocar a los ingenieros en resolver problemas reales, tangibles y de negocio."
+      },
+      {
+        number: "03",
+        title: "Pionero en UX de Misión Crítica",
+        desc: "Especialización en interfaces médicas y sistemas de alta carga cognitiva, donde un clic incorrecto tiene consecuencias humanas directas."
+      }
+    ],
+    speakerCta: "¿Organizas una conferencia, meetup o podcast? Charlemos",
     items: [
       {
         id: "talk-01",
         number: "01",
         title: "Construir productos desde problemas reales",
         status: "preparing",
-        statusLabel: "Preparando",
+        statusLabel: "En preparación · 2026",
         summary:
           "Cómo identificar la fricción invisible en organizaciones antes de escribir código y por qué la empatía operativa supera a los frameworks de moda.",
-        year: "2026"
+        year: "2026",
+        location: "Conferencia Principal",
+        eventType: "Keynote"
       },
       {
         id: "talk-02",
         number: "02",
-        title: "De escribir código a pensar en producto",
-        status: "idea",
-        statusLabel: "Idea",
+        title: "Arquitectura Frontend Resiliente & Rendimiento Extremo",
+        status: "scheduled",
+        statusLabel: "Confirmado · 2026",
         summary:
-          "La evolución del rol técnico: entender incentivos humanos, el valor de las restricciones y la simplificación como máxima sofisticación.",
-        year: "2026"
+          "Estrategias de monorepos distribuidos, Core Web Vitals y microinteracciones de 60 FPS sin sacrificar accesibilidad.",
+        year: "2026",
+        location: "Workshop Técnico",
+        eventType: "Masterclass"
       },
       {
         id: "talk-03",
         number: "03",
-        title: "Tecnología aplicada a educación",
-        status: "idea",
-        statusLabel: "Idea",
+        title: "De escribir código a pensar en producto",
+        status: "presented",
+        statusLabel: "Realizado · 2025",
         summary:
-          "Experiencias diseñando sistemas para miles de estudiantes en contextos con conectividad dispar y trámites críticos.",
-        year: "2026"
+          "La evolución del rol técnico: entender incentivos humanos, el valor de las restricciones y la simplificación como máxima sofisticación.",
+        year: "2025",
+        location: "Tech Summit",
+        eventType: "Panel"
+      },
+      {
+        id: "talk-04",
+        number: "04",
+        title: "Interfaces clínicas y diseño para situaciones de alta carga cognitiva",
+        status: "presented",
+        statusLabel: "Realizado · 2025",
+        summary:
+          "Lecciones diseñando software para personal de salud donde la claridad visual y la velocidad de respuesta salvan vidas.",
+        year: "2025",
+        location: "Simposio de Informática Médica",
+        eventType: "Conferencia"
       }
     ]
   },
@@ -302,6 +307,19 @@ export const esDictionary: I18nDictionary = {
         detail: "Priorizando fluidez nativa y respeto por las preferencias de movimiento reducido."
       }
     ]
+  },
+  contact: {
+    sectionTag: "Contacto",
+    headingLine1: "Trabajemos",
+    headingLine2: "juntos",
+    ctaButton: "Hablemos",
+    email: "contacto@jeffsantos.dev",
+    phone: "+51 927 847 430",
+    phoneDisplay: "+51 927 847 430",
+    location: "Lima, Perú",
+    timeZone: "17:48 COT (UTC-5)",
+    availability: "Disponible para proyectos selectos y consultoría de producto",
+    arrowLabel: "Contáctame"
   },
   footer: {
     brandStatement: "JEFF Santos // Jose Jefferson Santos Panaifo · Diseñado bajo arquitectura monorepo desacoplada.",

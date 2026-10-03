@@ -3,11 +3,15 @@ export interface Project {
   number: string;
   title: string;
   tagline: string;
+  discipline?: string;
+  category?: string;
+  year?: string;
+  client?: string;
   description: string;
   role: string[];
   tags: string[];
   link?: string;
-  image: {
+  image?: {
     src: string;
     alt: string;
   };

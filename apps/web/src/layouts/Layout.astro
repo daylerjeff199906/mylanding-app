@@ -3,6 +3,7 @@ import { ClientRouter } from "astro:transitions";
 import type { I18nDictionary } from "@platform/types";
 import { getDictionary, DEFAULT_LOCALE } from "@platform/content";
 import Header from "../components/Header.astro";
+import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
@@ -10,12 +11,16 @@ interface Props {
   dict?: I18nDictionary;
   title?: string;
   description?: string;
+  showContact?: boolean;
+  showFooter?: boolean;
 }
 
 const {
   dict = getDictionary(DEFAULT_LOCALE),
   title = dict.site.defaultTitle,
-  description = dict.site.defaultDescription
+  description = dict.site.defaultDescription,
+  showContact = true,
+  showFooter = false
 } = Astro.props;
 ---
 
@@ -74,7 +79,14 @@ const {
       <slot />
     </main>
 
-    <Footer data={dict.footer} site={dict.site} />
+    <!-- Dennis Snellenberg Style Contact & Master Footer -->
+    {showContact && dict.contact && (
+      <Contact data={dict.contact} site={dict.site} />
+    )}
+
+    {showFooter && (
+      <Footer data={dict.footer} site={dict.site} />
+    )}
 
     <!-- Animation lifecycle bootstrap -->
     <script>

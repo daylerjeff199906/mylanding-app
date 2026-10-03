@@ -1,0 +1,179 @@
+---
+import type { I18nContact, I18nSiteInfo } from "@platform/types";
+
+interface Props {
+  data: I18nContact;
+  site: I18nSiteInfo;
+}
+
+const { data, site } = Astro.props;
+const isEn = Astro.url.pathname.startsWith("/en");
+
+const headingLine1 = data.headingLine1 || (isEn ? "Let's work" : "Trabajemos");
+const headingLine2 = data.headingLine2 || (isEn ? "together" : "juntos");
+const ctaButton = data.ctaButton || (isEn ? "Get in touch" : "Hablemos");
+const email = data.email || "contacto@jeffsantos.dev";
+const phone = data.phone || "+51 927 847 430";
+const location = data.location || (isEn ? "Lima, Peru" : "Lima, Perú");
+const timeZone = data.timeZone || "17:48 COT (UTC-5)";
+---
+
+<section
+  id="contacto"
+  class="relative bg-[#141517] text-white pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden"
+>
+  <div class="container-editorial space-y-12 sm:space-y-16">
+    <!-- Top Header: Avatar + Headline + Arrow (Dennis Snellenberg Style) -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+      <div class="flex items-center gap-6 sm:gap-8">
+        <!-- Author Profile Avatar with availability status ring -->
+        <div class="relative shrink-0">
+          <img
+            src="/images/me.png"
+            alt={site.fullName}
+            width="80"
+            height="80"
+            class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border border-white/20 shadow-lg grayscale hover:grayscale-0 transition-all duration-300"
+          />
+          <span
+            class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-[#39FF14] border-2 border-[#141517]"
+            title={data.availability || "Disponible para proyectos"}
+          ></span>
+        </div>
+
+        <!-- Huge Headline: "Let's work together" -->
+        <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display uppercase tracking-tight text-white leading-[0.88]">
+          <span class="block">{headingLine1}</span>
+          <span class="block">{headingLine2}</span>
+        </h2>
+      </div>
+
+      <!-- Arrow Icon (as seen in Image 3 top right: ↙) -->
+      <div class="hidden lg:block self-start pt-4 pr-4">
+        <span class="text-4xl sm:text-5xl text-white/40 font-sans select-none block transform hover:translate-x-1 hover:translate-y-1 transition-transform">
+          ↙
+        </span>
+      </div>
+    </div>
+
+    <!-- Divider Line with Circular Floating Blue Action Button -->
+    <div class="relative pt-6 sm:pt-10">
+      <!-- Thin Divider -->
+      <div class="border-t border-white/10 w-full"></div>
+
+      <!-- Dennis Snellenberg Signature Electric Blue Floating Circular Button -->
+      <div class="flex justify-start sm:justify-end -mt-16 sm:-mt-20 pr-4 sm:pr-10 relative z-20">
+        <a
+          href={`mailto:${email}?subject=${encodeURIComponent(isEn ? "Collaboration / Project Inquiry" : "Consulta de Proyecto / Colaboración")}`}
+          class="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#455ce9] hover:bg-[#384ecc] text-white flex items-center justify-center text-center font-sans font-medium text-base sm:text-lg shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 no-underline cursor-pointer group"
+          id="get-in-touch-btn"
+        >
+          <span class="group-hover:scale-105 transition-transform">
+            {ctaButton}
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Pills (Email & Phone like in Image 3) -->
+    <div class="flex flex-wrap items-center gap-4 sm:gap-6 pt-4">
+      <!-- Email Pill -->
+      <div class="relative">
+        <a
+          href={`mailto:${email}`}
+          data-copy={email}
+          class="contact-pill inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/15 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm sm:text-base font-sans text-white/90 no-underline cursor-pointer group"
+        >
+          <span class="font-mono text-xs text-white/50 group-hover:text-black/50">@</span>
+          <span>{email}</span>
+        </a>
+      </div>
+
+      <!-- Phone / WhatsApp Pill -->
+      <a
+        href={`tel:${phone.replace(/\s+/g, "")}`}
+        class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/15 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm sm:text-base font-sans text-white/90 no-underline cursor-pointer group"
+      >
+        <span class="font-mono text-xs text-white/50 group-hover:text-black/50">#</span>
+        <span>{phone}</span>
+      </a>
+
+      <!-- Availability Badge -->
+      <span class="text-xs font-mono text-white/40 hidden md:inline-block ml-auto">
+        // {data.availability || "Disponible para consultoría & proyectos"}
+      </span>
+    </div>
+
+    <!-- Bottom Meta & Live Clock -->
+    <div class="pt-16 sm:pt-20 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono text-white/50">
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-[#39FF14]"></span>
+        <span>{location}</span>
+        <span>·</span>
+        <span id="local-clock" data-base-time="17:48">17:48 COT (UTC-5)</span>
+      </div>
+
+      <div class="flex flex-wrap gap-6 text-white/70">
+        <a
+          href="https://www.linkedin.com/in/josé-jefferson-santos-panaifo-3668a7246"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-white transition-colors"
+        >
+          LinkedIn ↗
+        </a>
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-white transition-colors"
+        >
+          GitHub ↗
+        </a>
+        <a
+          href="https://www.tiktok.com/@daylerjeff"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-white transition-colors"
+        >
+          TikTok ↗
+        </a>
+        <a
+          href="#main-content"
+          class="hover:text-white transition-colors ml-2"
+        >
+          ↑ {isEn ? "Back to top" : "Volver arriba"}
+        </a>
+      </div>
+
+      <p class="text-white/40">
+        © {new Date().getFullYear()} {site.brandName}.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Live Clock Script -->
+<script>
+  function updateClock() {
+    const clockEl = document.getElementById("local-clock");
+    if (!clockEl) return;
+
+    try {
+      const now = new Date();
+      // Lima, Peru timezone UTC-5
+      const timeStr = now.toLocaleTimeString("es-PE", {
+        timeZone: "America/Lima",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      });
+      clockEl.textContent = `${timeStr} COT (UTC-5)`;
+    } catch {
+      // Fallback
+    }
+  }
+
+  updateClock();
+  setInterval(updateClock, 30000);
+</script>

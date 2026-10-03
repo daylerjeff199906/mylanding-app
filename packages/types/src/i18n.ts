@@ -89,11 +89,15 @@ export interface I18nProjectItem {
   number: string;
   title: string;
   tagline: string;
+  discipline?: string;
+  category?: string;
+  year?: string;
+  client?: string;
   description: string;
   role: string[];
   tags: string[];
   link?: string;
-  image: {
+  image?: {
     src: string;
     alt: string;
   };
@@ -107,7 +111,9 @@ export interface I18nProjects {
   roleLabel: string;
   ctaCase: string;
   ctaViewMore: string;
+  moreWorkLabel?: string;
   items: I18nProjectItem[];
+  allProjects?: I18nProjectItem[];
 }
 
 export interface I18nSolutionItem {
@@ -151,11 +157,19 @@ export interface I18nTalkItem {
   statusLabel: string;
   summary: string;
   year?: string;
+  location?: string;
+  eventType?: string;
 }
 
 export interface I18nTalks {
   sectionTag?: string;
   lead: string;
+  subtitle?: string;
+  manifestoQuote?: string;
+  manifestoAuthor?: string;
+  visionTitle?: string;
+  visionPillars?: { number: string; title: string; desc: string }[];
+  speakerCta?: string;
   items: I18nTalkItem[];
 }
 
@@ -193,6 +207,20 @@ export interface I18nNow {
   items: I18nNowItem[];
 }
 
+export interface I18nContact {
+  sectionTag?: string;
+  headingLine1: string;
+  headingLine2: string;
+  ctaButton: string;
+  email: string;
+  phone: string;
+  phoneDisplay?: string;
+  location: string;
+  timeZone: string;
+  availability: string;
+  arrowLabel?: string;
+}
+
 export interface I18nFooter {
   brandStatement: string;
   philosophyQuote: string;
@@ -216,5 +244,6 @@ export interface I18nDictionary {
   talks: I18nTalks;
   activities: I18nActivities;
   now: I18nNow;
+  contact?: I18nContact;
   footer: I18nFooter;
 }

@@ -6,68 +6,186 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const isEn = Astro.url.pathname.startsWith("/en");
+
+const sectionTag = data.sectionTag || (isEn ? "Vision & Talks" : "Visión & Presentaciones");
+const lead = data.lead || (isEn ? "Sharing ideas, shaping discussions, and building impact." : "Compartiendo ideas, debatiendo el futuro y creando impacto.");
+const subtitle = data.subtitle || (isEn 
+  ? "I believe great software is not born from chasing trends blindly, but from understanding human friction and leading with architectural rigor."
+  : "Creo firmemente que el software de calidad no nace de seguir tendencias a ciegas, sino de comprender profundamente la fricción humana y liderar con rigor arquitectónico.");
+
+const manifestoQuote = data.manifestoQuote || (isEn
+  ? "I aspire to lead teams where technical architecture coexists with human empathy: robust systems within, calm and invisible outside."
+  : "Aspiro a liderar equipos donde la arquitectura técnica conviva con la empatía humana: sistemas robustos por dentro, invisibles y calmos por fuera.");
+
+const visionPillars = data.visionPillars || [
+  {
+    number: "01",
+    title: isEn ? "Software Architecture & Tech Leadership" : "Arquitectura de Software & Liderazgo Técnico",
+    desc: isEn 
+      ? "Designing the backbone of mission-critical platforms serving millions without downtime or loss of aesthetic precision."
+      : "Diseñar la columna vertebral de plataformas institucionales que atiendan a millones de personas sin caídas ni perder coherencia estética."
+  },
+  {
+    number: "02",
+    title: isEn ? "Product Mentor & Tech Evangelist" : "Divulgador & Mentor de Producto",
+    desc: isEn
+      ? "Taking engineering discussions beyond syntax: focusing builders on solving real, measurable human problems."
+      : "Llevar la conversación técnica más allá de las sintaxis: enfocar a los ingenieros en resolver problemas reales y tangibles."
+  },
+  {
+    number: "03",
+    title: isEn ? "Mission-Critical UX Pioneer" : "Pionero en UX de Misión Crítica",
+    desc: isEn
+      ? "Specializing in healthcare and high-cognitive-load interfaces where an erroneous interaction has direct human consequences."
+      : "Especialización en interfaces médicas y de alta carga cognitiva, donde un error de digitación tiene consecuencias humanas directas."
+  }
+];
+
+const items = data.items || [];
 ---
 
 <section
   id="charlas"
-  class="py-32 container-editorial border-t border-border dark:border-white/10"
+  class="py-28 sm:py-36 container-editorial border-t border-border dark:border-white/10"
 >
-  <div class="space-y-16">
-    <div class="space-y-4 max-w-3xl">
-      {data.sectionTag && (
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
-            // {data.sectionTag}
-          </span>
-        </div>
-      )}
+  <div class="space-y-20">
+    <!-- Header -->
+    <div class="max-w-3xl space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+          // {sectionTag}
+        </span>
+      </div>
 
       <h2 class="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.95]">
-        {data.lead}
+        {lead}
       </h2>
+
+      <p class="text-sm sm:text-base font-sans text-muted max-w-2xl leading-relaxed">
+        {subtitle}
+      </p>
     </div>
 
-    <!-- Editorial entries for talks -->
-    <div class="space-y-8">
-      {
-        data.items.map((talk) => (
-          <article
-            data-reveal-editorial
-            class="group p-6 sm:p-8 rounded-md bg-surface dark:bg-[#181B18] border border-border dark:border-white/10 hover:border-primary transition-colors duration-300"
-          >
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 pb-4 border-b border-border dark:border-white/10">
-              <div class="flex items-baseline gap-4">
-                <span class="text-xs font-mono font-bold text-primary bg-ink px-2 py-0.5 rounded-[4px]">
-                  {talk.number}
+    <!-- Editorial Manifesto / Ambition Card (Lo que se quiere ser) -->
+    <div class="relative p-8 sm:p-12 md:p-16 rounded-md bg-surface dark:bg-[#141614] border border-border dark:border-white/10 overflow-hidden shadow-xs">
+      <!-- Ambient light effect -->
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="space-y-12 relative z-10">
+        <div class="space-y-4 max-w-2xl">
+          <span class="text-xs font-mono text-primary uppercase font-bold tracking-widest block">
+            {isEn ? "// CAREER ASPIRATION & PURPOSE" : "// PROPÓSITO & HORIZONTE PROFESIONAL"}
+          </span>
+          <blockquote class="font-sans text-xl sm:text-2xl md:text-3xl text-ink dark:text-white font-medium leading-snug tracking-tight">
+            "{manifestoQuote}"
+          </blockquote>
+          <p class="text-xs font-mono text-muted">
+            {data.manifestoAuthor || "JEFF Santos · Visión Profesional"}
+          </p>
+        </div>
+
+        <!-- 3 Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-border dark:border-white/10">
+          {
+            visionPillars.map((pillar) => (
+              <div class="space-y-2">
+                <span class="text-xs font-mono font-bold text-primary block">
+                  {pillar.number}
                 </span>
-                <h3 class="text-2xl sm:text-3xl font-display uppercase tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
-                  {talk.title}
+                <h3 class="text-base font-sans font-semibold text-ink dark:text-white">
+                  {pillar.title}
                 </h3>
+                <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+                  {pillar.desc}
+                </p>
               </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
 
-              <!-- Subtle visual state without noisy badge clutter -->
-              <div class="flex items-center gap-2 self-start sm:self-auto">
-                <span
-                  class={`w-2 h-2 rounded-full ${
-                    talk.status === "preparing"
-                      ? "bg-primary animate-pulse"
-                      : "bg-muted"
-                  }`}
-                ></span>
-                <span class="text-xs font-mono text-muted uppercase font-medium">
-                  {talk.statusLabel}
-                </span>
+    <!-- Talks & Presentations List (Dennis Snellenberg / Editorial Style) -->
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b border-border dark:border-white/10 pb-4">
+        <span class="text-xs font-mono text-muted uppercase tracking-widest font-semibold">
+          {isEn ? "Selected Presentations & Talks" : "Presentaciones & Charlas Seleccionadas"}
+        </span>
+        <span class="text-xs font-mono text-muted">
+          {isEn ? "2025 — 2026" : "2025 — 2026"}
+        </span>
+      </div>
+
+      <div class="divide-y divide-border dark:divide-white/10">
+        {
+          items.map((talk) => (
+            <article class="group py-8 sm:py-10 transition-colors duration-200">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline">
+                <!-- Col 1: Number + Title -->
+                <div class="md:col-span-6 space-y-2">
+                  <div class="flex items-center gap-3">
+                    <span class="text-xs font-mono font-bold text-primary">
+                      {talk.number}
+                    </span>
+                    <span class="text-xs font-mono text-muted uppercase">
+                      {talk.eventType || (isEn ? "Talk" : "Conferencia")}
+                    </span>
+                  </div>
+                  <h3 class="text-2xl sm:text-3xl font-sans font-medium tracking-tight text-ink dark:text-white group-hover:text-primary transition-colors">
+                    {talk.title}
+                  </h3>
+                </div>
+
+                <!-- Col 2: Summary -->
+                <div class="md:col-span-4">
+                  <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+                    {talk.summary}
+                  </p>
+                </div>
+
+                <!-- Col 3: Status / Year -->
+                <div class="md:col-span-2 flex md:flex-col md:items-end justify-between items-baseline gap-2">
+                  <div class="inline-flex items-center gap-2">
+                    <span
+                      class={`w-2 h-2 rounded-full ${
+                        talk.status === "preparing"
+                          ? "bg-primary animate-pulse"
+                          : talk.status === "scheduled"
+                          ? "bg-blue-400"
+                          : "bg-muted/60"
+                      }`}
+                    ></span>
+                    <span class="text-xs font-mono text-muted uppercase font-medium">
+                      {talk.statusLabel}
+                    </span>
+                  </div>
+                  <span class="text-xs font-mono text-muted/80">
+                    {talk.year || "2026"}
+                  </span>
+                </div>
               </div>
-            </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
 
-            {talk.summary && (
-              <p class="pt-4 text-xs sm:text-sm font-sans text-muted max-w-3xl leading-relaxed">
-                {talk.summary}
-              </p>
-            )}
-          </article>
-        ))
-      }
+    <!-- Speaker Callout Bar -->
+    <div class="p-6 sm:p-8 rounded-md bg-surface dark:bg-dark border border-border dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center sm:text-left">
+        <p class="text-sm font-sans font-medium text-ink dark:text-white">
+          {data.speakerCta || (isEn ? "Organizing a conference, meetup or podcast? Let's talk" : "¿Organizas una conferencia, meetup o podcast? Charlemos")}
+        </p>
+        <p class="text-xs font-mono text-muted">
+          {isEn ? "Available for keynotes, panel discussions, and workshops." : "Disponible para ponencias magistrales, paneles y talleres técnicos."}
+        </p>
+      </div>
+
+      <a href="#contacto" class="btn-primary shrink-0 no-underline">
+        <span>{isEn ? "Invite to Speak" : "Invitar a un evento"}</span>
+        <span>→</span>
+      </a>
     </div>
   </div>
 </section>
