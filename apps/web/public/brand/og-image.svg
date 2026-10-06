@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#101210"/>
+  
+  <!-- Subtle ambient glow -->
+  <circle cx="950" cy="200" r="300" fill="#39FF14" fill-opacity="0.08" filter="blur(80px)"/>
+  <circle cx="200" cy="500" r="250" fill="#39FF14" fill-opacity="0.04" filter="blur(60px)"/>
+  
+  <!-- Top bar / Category Tag -->
+  <g transform="translate(100, 120)">
+    <rect width="8" height="8" rx="2" fill="#39FF14"/>
+    <text x="24" y="9" fill="#39FF14" font-family="monospace" font-size="16" font-weight="bold" letter-spacing="3">// SOFTWARE ENGINEER · FRONTEND ARCHITECTURE</text>
+  </g>
+
+  <!-- Name Headline -->
+  <text x="100" y="240" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="76" font-weight="800" letter-spacing="-1.5">
+    JOSE JEFFERSON SANTOS
+  </text>
+  
+  <!-- Subtitle & Role -->
+  <text x="100" y="315" fill="#A1A1AA" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="400">
+    Digital Product Specialist &amp; Systems Architecture
+  </text>
+
+  <!-- Alias Badge & Domains -->
+  <g transform="translate(100, 390)">
+    <!-- Pill 1: @daylerjeff -->
+    <rect width="180" height="44" rx="22" fill="#1C1F1C" stroke="#2E342E" stroke-width="1.5"/>
+    <text x="90" y="28" fill="#39FF14" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle">@daylerjeff</text>
+    
+    <!-- Pill 2: Healthcare & Bioacoustics -->
+    <rect x="200" width="300" height="44" rx="22" fill="#1C1F1C" stroke="#2E342E" stroke-width="1.5"/>
+    <text x="350" y="28" fill="#E4E4E7" font-family="monospace" font-size="16" text-anchor="middle">HealthTech · Bioacústica</text>
+  </g>
+
+  <!-- Bottom Divider & Site URL -->
+  <line x1="100" y1="510" x2="1100" y2="510" stroke="#27272A" stroke-width="1.5"/>
+  <text x="100" y="555" fill="#71717A" font-family="monospace" font-size="20">
+    josesantos.site
+  </text>
+  <text x="1100" y="555" fill="#39FF14" font-family="monospace" font-size="18" text-anchor="end" font-weight="bold">
+    Lima, Perú · UTC-5
+  </text>
+</svg>

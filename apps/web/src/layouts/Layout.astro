@@ -11,6 +11,7 @@ interface Props {
   dict?: I18nDictionary;
   title?: string;
   description?: string;
+  image?: string;
   showContact?: boolean;
   showFooter?: boolean;
 }
@@ -19,9 +20,67 @@ const {
   dict = getDictionary(DEFAULT_LOCALE),
   title = dict.site.defaultTitle,
   description = dict.site.defaultDescription,
+  image = "/images/meta_identidad.png",
   showContact = true,
   showFooter = false
 } = Astro.props;
+
+const siteOrigin = "https://josesantos.site";
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin).href;
+const ogImageURL = new URL(image, siteOrigin).href;
+const isEn = dict.locale === "en";
+
+// Schema.org Person & WebSite graph for Google authority and Knowledge Panel
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://josesantos.site/#person",
+      "name": "JOSE JEFFERSON SANTOS",
+      "givenName": "Jose Jefferson",
+      "familyName": "Santos Panaifo",
+      "additionalName": "daylerjeff",
+      "alternateName": ["JEFF Santos", "daylerjeff", "daylerjeff199906", "Jose Jefferson Santos"],
+      "url": "https://josesantos.site",
+      "image": "https://josesantos.site/images/meta_identidad.png",
+      "jobTitle": "Software Engineer & Frontend Architect",
+      "description": "Ingeniero de Sistemas e Informática especializado en arquitectura frontend, diseño de sistemas y desarrollo de productos digitales.",
+      "sameAs": [
+        "https://www.linkedin.com/in/josé-jefferson-santos-panaifo-3668a7246",
+        "https://github.com/daylerjeff",
+        "https://github.com/daylerjeff199906",
+        "https://www.tiktok.com/@daylerjeff"
+      ],
+      "knowsAbout": [
+        "Software Engineering",
+        "Frontend Architecture",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Astro",
+        "UX/UI Design",
+        "Healthcare Informatics",
+        "Amazonian Biodiversity Informatics"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Universidad Nacional de la Amazonía Peruana"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://josesantos.site/#website",
+      "url": "https://josesantos.site",
+      "name": "JOSE JEFFERSON SANTOS // Software Engineer (@daylerjeff)",
+      "alternateName": "josesantos.site",
+      "publisher": {
+        "@id": "https://josesantos.site/#person"
+      },
+      "inLanguage": ["es", "en"]
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -35,24 +94,46 @@ const {
     <meta name="theme-color" content="#101210" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO Best Practices with dynamic non-hardcoded titles -->
+    <!-- Primary SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={Astro.url.href} />
+    <meta name="author" content="JOSE JEFFERSON SANTOS (@daylerjeff)" />
+    <meta name="keywords" content="Jose Jefferson Santos, JOSE JEFFERSON SANTOS, daylerjeff, daylerjeff199906, JEFF Santos, Jose Jefferson Santos Panaifo, Software Engineer, Ingeniero de Sistemas, Frontend Architecture, Astro, React, TypeScript, josesantos.site, MedMind, Fonoteca IIAP" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:type" content="website" />
+    <!-- Language Alternates (hreflang) -->
+    <link rel="alternate" hreflang="es" href="https://josesantos.site/" />
+    <link rel="alternate" hreflang="en" href="https://josesantos.site/en" />
+    <link rel="alternate" hreflang="x-default" href="https://josesantos.site/" />
+
+    <!-- Open Graph / Social Graph -->
+    <meta property="og:site_name" content="JOSE JEFFERSON SANTOS (@daylerjeff)" />
+    <meta property="og:type" content="profile" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content="/brand/og-image.svg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="1254" />
+    <meta property="og:image:alt" content="JOSE JEFFERSON SANTOS - Software Engineer & Frontend Architect (@daylerjeff)" />
+    <meta property="profile:first_name" content="Jose Jefferson" />
+    <meta property="profile:last_name" content="Santos Panaifo" />
+    <meta property="profile:username" content="daylerjeff" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@daylerjeff" />
+    <meta name="twitter:creator" content="@daylerjeff" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/brand/og-image.svg" />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaJsonLd)} />
 
     <!-- Prevent Dark Mode Flicker and persist on page transitions -->
     <script is:inline>

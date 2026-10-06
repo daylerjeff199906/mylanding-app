@@ -143,13 +143,13 @@ const enProjects: I18nProjectItem[] = [
 export const enDictionary: I18nDictionary = {
   locale: "en",
   site: {
-    brandName: "JEFF Santos",
+    brandName: "JOSE JEFFERSON SANTOS",
     fullName: "Jose Jefferson Santos Panaifo",
     monogram: "JS",
-    tagline: "Software Engineer · Systems & Editorial Digital Products",
-    defaultTitle: "JEFF Santos // Storytelling, Architecture & Product",
+    tagline: "Software Engineer · Frontend Architect & Digital Products",
+    defaultTitle: "JOSE JEFFERSON SANTOS // Software Engineer & Frontend Architect (@daylerjeff)",
     defaultDescription:
-      "Observe small frictions → understand context → contribute solutions → learn → share. Personal and narrative platform of JEFF Santos."
+      "Official platform of Jose Jefferson Santos Panaifo (@daylerjeff). Systems Engineer specializing in frontend architecture, systems design, and high-impact institutional and scientific digital products."
   },
   nav: {
     projects: "Projects",
@@ -461,7 +461,7 @@ export const enDictionary: I18nDictionary = {
     arrowLabel: "Get in touch"
   },
   footer: {
-    brandStatement: "JEFF Santos // Jose Jefferson Santos Panaifo · Decoupled monorepo architecture.",
+    brandStatement: "JOSE JEFFERSON SANTOS // Jose Jefferson Santos Panaifo (@daylerjeff) · Software Engineer & Frontend Architect.",
     philosophyQuote: "Before building, you must understand.",
     backToTop: "Back to top",
     github: "GitHub",
