@@ -1,0 +1,349 @@
+---
+import { getDictionary } from "@platform/content";
+import Layout from "../layouts/Layout.astro";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-astro";
+
+const dict = getDictionary("es");
+const { contact } = dict;
+
+const email = contact?.email || "daylersan@gmail.com";
+const phone = contact?.phone || "+51 966 870 897";
+const location = contact?.location || "Lima, Perú";
+const cleanPhone = phone.replace(/[^\d+]/g, "");
+const waNumber = cleanPhone.replace("+", "");
+---
+
+<Layout
+  dict={dict}
+  title="Contacto // JEFF Santos"
+  description="Página de contacto oficial de JEFF Santos. Envíame un mensaje directo para colaboraciones, consultoría o desarrollo de software."
+  showContact={false}
+  showFooter={true}
+>
+  <div class="pt-32 pb-24 container-editorial">
+    <!-- Breadcrumb back link -->
+    <div class="pb-8">
+      <a
+        href="/#hero"
+        class="inline-flex items-center gap-2 text-xs font-mono font-medium text-muted hover:text-ink dark:hover:text-white transition-colors group"
+      >
+        <ArrowLeft class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+        <span>Volver al inicio</span>
+      </a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="max-w-4xl space-y-6 pb-14 border-b border-border dark:border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono tracking-widest text-primary font-bold uppercase">
+          // CANAL DIRECTO DE COMUNICACIÓN
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display uppercase tracking-tight text-ink dark:text-white leading-[0.92]">
+        Hablemos sobre tu proyecto
+      </h1>
+
+      <p class="text-base sm:text-lg font-sans text-muted max-w-2xl leading-relaxed">
+        Desarrollo software enfocado en entender problemas reales, diseñar arquitecturas limpias y convertir ideas en productos digitales simples. Escríbeme y conversemos sobre cómo colaborar.
+      </p>
+    </header>
+
+    <!-- Main Content: Direct Cards + Interactive Form -->
+    <div class="pt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <!-- Left Column: Contact Cards & Info (lg:col-span-5) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Direct Channels Card -->
+        <div class="p-6 sm:p-8 rounded-2xl border border-border dark:border-white/10 bg-surface dark:bg-white/[0.02] space-y-6 shadow-xs">
+          <h2 class="text-xs font-mono text-primary font-bold uppercase tracking-wider">
+            // Canales inmediatos
+          </h2>
+
+          <div class="space-y-5">
+            <!-- Email Item -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono text-muted uppercase">Correo electrónico</span>
+              <div>
+                <a
+                  href={`mailto:${email}`}
+                  class="text-base sm:text-lg font-sans font-medium text-ink dark:text-white hover:text-primary transition-colors inline-flex items-center gap-2"
+                >
+                  <span>{email}</span>
+                  <ArrowUpRight class="w-3.5 h-3.5 text-muted group-hover:text-primary transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp Item -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono text-muted uppercase">WhatsApp directo</span>
+              <div>
+                <a
+                  href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hola Jeff, te escribo desde la página de contacto de tu portafolio.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-base sm:text-lg font-sans font-medium text-ink dark:text-white hover:text-[#25D366] transition-colors inline-flex items-center gap-2"
+                >
+                  <span>{phone}</span>
+                  <ArrowUpRight class="w-3.5 h-3.5 text-muted group-hover:text-[#25D366] transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone Call Item -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono text-muted uppercase">Llamada telefónica</span>
+              <div>
+                <a
+                  href={`tel:${cleanPhone}`}
+                  class="text-sm font-sans text-muted hover:text-ink dark:hover:text-white transition-colors"
+                >
+                  {phone} (Móvil Perú)
+                </a>
+              </div>
+            </div>
+
+            <!-- Location & Timezone -->
+            <div class="space-y-1 pt-2 border-t border-border dark:border-white/10">
+              <span class="text-[11px] font-mono text-muted uppercase">Ubicación & Horario</span>
+              <p class="text-sm font-sans text-ink dark:text-white">
+                {location} · Zona horaria COT (UTC-5)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability Badge Card -->
+        <div class="p-6 rounded-2xl border border-border dark:border-white/10 bg-surface dark:bg-white/[0.02] flex items-start gap-4 shadow-xs">
+          <span class="w-3 h-3 rounded-full bg-primary shrink-0 mt-1 shadow-[0_0_10px_rgba(57,255,20,0.5)]"></span>
+          <div class="space-y-1">
+            <h3 class="text-xs font-mono font-bold text-ink dark:text-white uppercase">Estado actual</h3>
+            <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+              {contact?.availability || "Disponible para nuevos proyectos de producto, consultoría y arquitectura frontend."}
+            </p>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="p-6 rounded-2xl border border-border dark:border-white/10 bg-surface dark:bg-white/[0.02] space-y-3">
+          <span class="text-[11px] font-mono text-muted uppercase">// Redes profesionales</span>
+          <div class="flex flex-wrap gap-4 text-xs font-mono">
+            <a
+              href="https://www.linkedin.com/in/josé-jefferson-santos-panaifo-3668a7246"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted hover:text-ink dark:hover:text-white transition-colors inline-flex items-center gap-1"
+            >
+              <span>LinkedIn</span>
+              <ArrowUpRight class="w-3 h-3" />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted hover:text-ink dark:hover:text-white transition-colors inline-flex items-center gap-1"
+            >
+              <span>GitHub</span>
+              <ArrowUpRight class="w-3 h-3" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@daylerjeff"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted hover:text-ink dark:hover:text-white transition-colors inline-flex items-center gap-1"
+            >
+              <span>TikTok</span>
+              <ArrowUpRight class="w-3 h-3" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Form (lg:col-span-7) -->
+      <div class="lg:col-span-7">
+        <div class="rounded-2xl border border-border dark:border-white/10 bg-surface dark:bg-[#151715] p-6 sm:p-10 shadow-lg space-y-8">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-xs font-mono text-primary uppercase font-bold">
+              <span>//</span>
+              <span>Mensaje directo a mi correo</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-sans font-medium text-ink dark:text-white tracking-tight">
+              Envíame un mensaje
+            </h2>
+            <p class="text-xs sm:text-sm font-sans text-muted leading-relaxed">
+              Recibiré tu mensaje en tiempo real en mi bandeja personal ({email}) y te responderé en menos de 24 horas.
+            </p>
+          </div>
+
+          <!-- The Contact Form -->
+          <form
+            id="page-contact-form"
+            action={`https://formsubmit.co/${email}`}
+            method="POST"
+            class="space-y-6"
+          >
+            <!-- Anti-spam & Configuration -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de JEFF Santos" />
+
+            <!-- Row 1: Name and Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="input-name" class="block text-xs font-mono font-medium text-ink dark:text-white/80">
+                  Tu nombre completo *
+                </label>
+                <input
+                  type="text"
+                  id="input-name"
+                  name="name"
+                  required
+                  placeholder="Ej. Ana Pérez"
+                  class="w-full px-4 py-3 rounded-xl bg-background dark:bg-white/[0.04] border border-border dark:border-white/15 text-ink dark:text-white placeholder-muted/60 text-sm font-sans focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="input-email" class="block text-xs font-mono font-medium text-ink dark:text-white/80">
+                  Tu correo electrónico *
+                </label>
+                <input
+                  type="email"
+                  id="input-email"
+                  name="email"
+                  required
+                  placeholder="tu@correo.com"
+                  class="w-full px-4 py-3 rounded-xl bg-background dark:bg-white/[0.04] border border-border dark:border-white/15 text-ink dark:text-white placeholder-muted/60 text-sm font-sans focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                />
+              </div>
+            </div>
+
+            <!-- Row 2: Subject -->
+            <div class="space-y-2">
+              <label for="input-subject" class="block text-xs font-mono font-medium text-ink dark:text-white/80">
+                Asunto o tipo de proyecto *
+              </label>
+              <input
+                type="text"
+                id="input-subject"
+                name="subject"
+                required
+                placeholder="Ej. Desarrollo de software / Arquitectura / Consulta general"
+                class="w-full px-4 py-3 rounded-xl bg-background dark:bg-white/[0.04] border border-border dark:border-white/15 text-ink dark:text-white placeholder-muted/60 text-sm font-sans focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              />
+            </div>
+
+            <!-- Row 3: Message -->
+            <div class="space-y-2">
+              <label for="input-message" class="block text-xs font-mono font-medium text-ink dark:text-white/80">
+                Detalles del mensaje *
+              </label>
+              <textarea
+                id="input-message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Cuéntame sobre el problema a resolver, los objetivos, plazos o cualquier consulta que tengas..."
+                class="w-full px-4 py-3 rounded-xl bg-background dark:bg-white/[0.04] border border-border dark:border-white/15 text-ink dark:text-white placeholder-muted/60 text-sm font-sans focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-y min-h-[140px]"
+              ></textarea>
+            </div>
+
+            <!-- Live Status Feedback -->
+            <div id="form-feedback" class="hidden"></div>
+
+            <!-- Submit Button & Disclaimer -->
+            <div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <button
+                type="submit"
+                id="submit-button"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full bg-primary hover:bg-[#32e012] text-black font-semibold text-sm sm:text-base tracking-tight shadow-[0_0_30px_rgba(57,255,20,0.3)] hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group"
+              >
+                <span id="submit-text">Enviar mensaje</span>
+                <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <span class="text-xs font-mono text-muted">
+                Llegará directamente a {email}
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function setupPageContactForm() {
+    const form = document.getElementById("page-contact-form") as HTMLFormElement | null;
+    const feedbackEl = document.getElementById("form-feedback");
+    const submitBtn = document.getElementById("submit-button") as HTMLButtonElement | null;
+    const submitText = document.getElementById("submit-text");
+
+    if (!form || !feedbackEl || !submitBtn || !submitText) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const originalText = submitText.textContent || "Enviar mensaje";
+      submitText.textContent = "Enviando mensaje...";
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-75", "cursor-wait");
+
+      feedbackEl.className = "hidden";
+      feedbackEl.innerHTML = "";
+
+      const formData = new FormData(form);
+      const dataObj: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        dataObj[key] = value.toString();
+      });
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/daylersan@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(dataObj)
+        });
+
+        if (response.ok) {
+          feedbackEl.className = "p-5 rounded-xl border border-primary/40 bg-primary/10 text-primary text-xs sm:text-sm font-mono flex items-start gap-3";
+          feedbackEl.innerHTML = `
+            <span class="text-base font-bold">✓</span>
+            <div>
+              <p class="font-bold">¡Mensaje enviado con éxito!</p>
+              <p class="opacity-90 mt-1">Gracias por escribirme. He recibido tu mensaje en mi correo y te responderé en breve.</p>
+            </div>
+          `;
+          form.reset();
+        } else {
+          throw new Error("Error en la respuesta del servidor");
+        }
+      } catch (err) {
+        // Fallback gracefully to direct mailto
+        const subject = encodeURIComponent(dataObj.subject || "Consulta de Proyecto");
+        const body = encodeURIComponent(`Hola Jeff,\n\nSoy ${dataObj.name || ""}.\n\n${dataObj.message || ""}\n\nMi correo: ${dataObj.email || ""}`);
+        const mailtoLink = `mailto:daylersan@gmail.com?subject=${subject}&body=${body}`;
+
+        feedbackEl.className = "p-5 rounded-xl border border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-200 text-xs sm:text-sm font-mono space-y-2";
+        feedbackEl.innerHTML = `
+          <p class="font-bold">Aviso: Hubo un inconveniente al enviar por la red.</p>
+          <p>Puedes enviar tu mensaje directamente abriendo tu cliente de correo:</p>
+          <a href="${mailtoLink}" class="inline-flex items-center gap-2 underline text-primary font-bold hover:opacity-80 mt-1">
+            <span>Abrir correo con tu mensaje listo →</span>
+          </a>
+        `;
+      } finally {
+        submitText.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-75", "cursor-wait");
+      }
+    });
+  }
+
+  setupPageContactForm();
+  document.addEventListener("astro:page-load", setupPageContactForm);
+</script>

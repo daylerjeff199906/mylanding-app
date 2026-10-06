@@ -1,5 +1,6 @@
 ---
 import type { I18nProjects } from "@platform/types";
+import { ArrowUpRight } from "lucide-astro";
 
 interface Props {
   data: I18nProjects;
@@ -11,7 +12,7 @@ const worksHref = isEn ? "/en/work" : "/proyectos";
 
 // Show featured or top 4 projects on home, with total count for the pill
 const displayedProjects = data.items.slice(0, 4);
-const totalCount = data.allProjects ? data.allProjects.length : 11;
+const totalCount = data.allProjects ? data.allProjects.length : (data.items ? data.items.length : 7);
 ---
 
 <section
@@ -64,9 +65,7 @@ const totalCount = data.allProjects ? data.allProjects.length : 11;
                   <span class="text-xs sm:text-sm font-sans tracking-normal text-muted group-hover:text-ink dark:group-hover:text-white transition-colors duration-300">
                     {discipline}
                   </span>
-                  <span class="text-xs font-mono text-muted/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 hidden sm:inline">
-                    ↗
-                  </span>
+                  <ArrowUpRight class="w-4 h-4 text-muted/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 hidden sm:inline" />
                 </div>
               </div>
             </a>

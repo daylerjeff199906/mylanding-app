@@ -1,6 +1,7 @@
 ---
 import type { I18nFooter, I18nSiteInfo } from "@platform/types";
 import MonogramJS from "./ui/MonogramJS.astro";
+import { ArrowUp, ArrowUpRight, ArrowRight } from "lucide-astro";
 
 interface Props {
   data: I18nFooter;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const { data, site } = Astro.props;
+const isEn = Astro.url.pathname.startsWith("/en");
+const contactUrl = isEn ? "/en/contact" : "/contacto";
 ---
 
 <footer class="py-20 border-t border-border dark:border-white/10 bg-black/5 dark:bg-black/30">
@@ -26,17 +29,17 @@ const { data, site } = Astro.props;
       </div>
 
       <div class="flex flex-wrap gap-8 text-xs font-mono font-medium text-muted">
-        <a href="#hero" class="editorial-link">
+        <a href="#hero" class="editorial-link inline-flex items-center gap-1.5">
           <span>{data.backToTop}</span>
-          <span class="arrow font-sans">↑</span>
+          <ArrowUp class="w-3.5 h-3.5" />
         </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="editorial-link">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="editorial-link inline-flex items-center gap-1.5">
           <span>{data.github}</span>
-          <span class="arrow font-sans">↗</span>
+          <ArrowUpRight class="w-3.5 h-3.5" />
         </a>
-        <a href="mailto:contacto@jeffsantos.dev" class="editorial-link">
+        <a href={contactUrl} class="editorial-link inline-flex items-center gap-1.5">
           <span>{data.contact}</span>
-          <span class="arrow font-sans">→</span>
+          <ArrowRight class="w-3.5 h-3.5" />
         </a>
       </div>
     </div>

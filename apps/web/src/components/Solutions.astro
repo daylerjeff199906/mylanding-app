@@ -1,5 +1,6 @@
 ---
 import type { I18nSolutions } from "@platform/types";
+import { ArrowRight } from "lucide-astro";
 
 interface Props {
   data: I18nSolutions;
@@ -78,9 +79,9 @@ const { data } = Astro.props;
 
       <!-- CTA to explore solutions -->
       <div class="text-center pt-2">
-        <a href="#contexto" class="btn-primary">
+        <a href="#proyectos" class="btn-primary inline-flex items-center gap-2">
           <span>{data.ctaExplore}</span>
-          <span>→</span>
+          <ArrowRight class="w-4 h-4" />
         </a>
       </div>
     </div>

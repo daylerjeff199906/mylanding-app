@@ -5,219 +5,136 @@ const enProjects: I18nProjectItem[] = [
     id: "medmind",
     number: "01",
     title: "MedMind",
-    tagline: "Education + Healthcare",
+    tagline: "Healthcare / Medical Education",
     discipline: "Interaction & Development",
-    category: "Healthcare & Education",
+    category: "Healthcare & Data",
     year: "2026",
-    client: "Healthcare Sector / Medical Residents",
+    client: "Healthcare Sector / Medical Education",
     description:
-      "Clinical decision training platform for medical residents. My work focused on transforming dense static manuals into interactive simulations with immediate formative feedback.",
-    role: ["Product", "Development", "UX"],
-    tags: ["TypeScript", "Motion", "UX Research", "Design Systems"],
-    link: "#medmind",
+      "Training and exam preparation platform for physicians that transforms traditional study into an active, personalized learning experience. Integrates smart practice, simulations, learning paths, and progress tracking.",
+    role: ["Product Design", "Interaction", "Development"],
+    tags: ["TypeScript", "UX/UI", "Motion", "Product Design"],
+    link: "https://medmind.com.pe/",
     image: {
       src: "/images/project-medmind.svg",
-      alt: "Editorial interface of the MedMind clinical learning system"
+      alt: "MedMind - Training and exam preparation platform for physicians"
     },
     featured: true
   },
   {
-    id: "sigae-core",
+    id: "sigae",
     number: "02",
-    title: "SIGAE Core",
-    tagline: "Management + Institutional Processes",
-    discipline: "Architecture & Systems",
-    category: "Development & Architecture",
-    year: "2025",
-    client: "Institutional Admissions",
+    title: "SIGAE",
+    tagline: "Education / Academic Management",
+    discipline: "Product & Development",
+    category: "Education & Management",
+    year: "2026",
+    client: "Education Sector / Academic Management",
     description:
-      "Complete modernization of the institutional admissions platform. Contributed to flow redesign, cutting redundant steps by 64% and eliminating drop-off.",
-    role: ["Frontend Architecture", "Flows", "UI Engineering"],
-    tags: ["Turborepo", "Astro", "Tailwind", "Accessibility"],
-    link: "#sigae-core",
+      "Academic management system for faculty and students that centralizes courses, content, syllabi, and grade records within a clear, accessible institutional experience.",
+    role: ["Product", "Development", "UX/UI"],
+    tags: ["JavaScript", "APIs", "SQL", "UX/UI"],
     image: {
       src: "/images/project-sigae.svg",
-      alt: "Simplified admission workflow interface"
+      alt: "SIGAE - Institutional academic management system"
     },
     featured: true
   },
   {
-    id: "cortex-analytics",
+    id: "sala-situacional-geresa",
     number: "03",
-    title: "Cortex Lens",
-    tagline: "Data + Digital Products",
-    discipline: "Design & Development",
-    category: "Design & UX",
-    year: "2025",
-    client: "Operations Intelligence Lab",
+    title: "Sala Situacional GERESA",
+    tagline: "Public Health / Data Analytics",
+    discipline: "Data & Development",
+    category: "Healthcare & Data",
+    year: "2026",
+    client: "Public Health Sector / Data",
     description:
-      "Real-time operational metrics and correlations exploration tool. Designed around the tenet that data only delivers value when visualization does not compete with decisions.",
-    role: ["Product Design", "Prototyping", "Frontend"],
-    tags: ["Data Visualization", "GSAP", "Micro-interactions", "Performance"],
-    link: "#cortex-analytics",
+      "Platform engineered to transform epidemiological data from disparate sources into actionable intelligence for surveillance and decision-making. Integrates indicators, interactive maps, and visualizations for diseases such as dengue, malaria, ARI, and ADD.",
+    role: ["Data Visualization", "Fullstack Development", "GeoJSON"],
+    tags: ["Python", "APIs", "Data Visualization", "GeoJSON"],
     image: {
       src: "/images/project-cortex.svg",
-      alt: "Data correlations in Cortex Lens"
+      alt: "Sala Situacional GERESA - Epidemiological surveillance and data analytics"
     },
     featured: true
   },
   {
-    id: "turboui-core",
+    id: "fonoteca-iiap",
     number: "04",
-    title: "TurboUI Core",
-    tagline: "Design Systems & Tooling",
-    discipline: "Design Systems & Tooling",
-    category: "Development & Architecture",
-    year: "2025",
-    client: "Multi-platform Ecosystem",
+    title: "Fonoteca IIAP",
+    tagline: "Biodiversity / Bioacoustics",
+    discipline: "Architecture & Development",
+    category: "Biodiversity & Science",
+    year: "2025—2026",
+    client: "Biodiversity / Bioacoustics",
     description:
-      "Agnostic library of semantic tokens, accessible primitives, and typographic scales for distributed applications within monorepos.",
-    role: ["Design Systems Lead", "CSS Architecture", "A11y"],
-    tags: ["Vanilla CSS", "Radix Primitives", "Tokens", "A11y"],
-    link: "#turboui-core",
+      "Digital acoustic library built to systematize, manage, and explore audio recordings of Amazonian wildlife. Integrates species taxonomy, geographic locations, metadata, audio playback, waveforms, and spectrograms in a specialized scientific platform.",
+    role: ["Architecture", "Development", "Audio Engine"],
+    tags: ["Astro", "React", "NestJS", "PostgreSQL", "MinIO"],
+    link: "https://fonoteca.iiap.gob.pe/",
     image: {
       src: "/images/project-cortex.svg",
-      alt: "TurboUI Design tokens and primitives"
+      alt: "Fonoteca IIAP - Digital acoustic library of Amazonian wildlife"
     },
     featured: true
   },
   {
-    id: "docusync-engine",
+    id: "anfibios-reptiles-iiap",
     number: "05",
-    title: "DocuSync Flow",
-    tagline: "Validation & Automation",
-    discipline: "Interaction & Fullstack",
-    category: "Development & Architecture",
-    year: "2024",
-    client: "Government Document Management",
+    title: "Anfibios y Reptiles IIAP",
+    tagline: "Biodiversity / Research",
+    discipline: "Frontend & UX/UI",
+    category: "Biodiversity & Science",
+    year: "2025—2026",
+    client: "Biodiversity / Research",
     description:
-      "Reactive reconciliation and digital signature engine for legally dense workflows featuring offline-first local storage and idempotent sync.",
-    role: ["Frontend Engineering", "Offline PWA", "Security"],
-    tags: ["IndexedDB", "Web Workers", "Micro-frontends", "TypeScript"],
-    link: "#docusync-engine",
+      "Digital platform dedicated to the dissemination and exploration of scientific data on Amazonian amphibian and reptile species. Developed and refined user interfaces focused on making scientific knowledge clear and accessible.",
+    role: ["Frontend Development", "UX/UI Design"],
+    tags: ["React", "Next.js", "TypeScript", "Figma"],
+    link: "https://vertebrados.iiap.gob.pe/",
+    image: {
+      src: "/images/project-medmind.svg",
+      alt: "Anfibios y Reptiles IIAP - Scientific catalog of Amazonian species"
+    },
+    featured: false
+  },
+  {
+    id: "portal-web-iiap",
+    number: "06",
+    title: "Portal Web IIAP",
+    tagline: "Institutional / Amazonian Science",
+    discipline: "Frontend Development",
+    category: "Biodiversity & Science",
+    year: "2025—2026",
+    client: "Institutional / Amazonian Science",
+    description:
+      "Modernization and continuous maintenance of the institutional portal for the Research Institute of the Peruvian Amazon (IIAP), working on UI components, content architecture, and responsive layouts to improve access to scientific knowledge.",
+    role: ["Frontend Development", "Web Modernization"],
+    tags: ["React", "Next.js", "TypeScript", "Figma"],
     image: {
       src: "/images/project-sigae.svg",
-      alt: "DocuSync document sync engine"
-    },
-    featured: true
-  },
-  {
-    id: "bioviz-atlas",
-    number: "06",
-    title: "BioViz Atlas",
-    tagline: "Bioinformatics + Data Science",
-    discipline: "Data Visualization & WebGL",
-    category: "Research & Science",
-    year: "2024",
-    client: "Applied Research Lab",
-    description:
-      "High-resolution canvas visualizer for gene expression maps and complex genomic sequences rendering at 60 FPS without memory bloat.",
-    role: ["Graphics Developer", "Optimization", "Algorithms"],
-    tags: ["WebGL", "Canvas API", "WebAssembly", "Data Viz"],
-    link: "#bioviz-atlas",
-    image: {
-      src: "/images/project-cortex.svg",
-      alt: "Bioinformatics atlas visualization"
+      alt: "Portal Web IIAP - Institutional scientific research portal"
     },
     featured: false
   },
   {
-    id: "clinicflow-os",
+    id: "admision-postgrado-unap",
     number: "07",
-    title: "ClinicFlow OS",
-    tagline: "Agile Healthcare Management",
-    discipline: "Product Design & Frontend",
-    category: "Healthcare & Education",
-    year: "2024",
-    client: "Regional Healthcare Network",
+    title: "Admisión Postgrado UNAP",
+    tagline: "Education / Institutional Management",
+    discipline: "Software Development",
+    category: "Education & Management",
+    year: "2024—2026",
+    client: "Education Sector / Institutional Management",
     description:
-      "Emergency bed allocation and triage interface engineered to eliminate data-entry errors under intense medical staff stress.",
-    role: ["User Research", "Prototyping", "UI Dev"],
-    tags: ["Crisis UX", "Design Tokens", "Vue", "Web Sockets"],
-    link: "#clinicflow-os",
+      "Digital platform to manage and streamline the graduate school admission process at Universidad Nacional de la Amazonía Peruana, centralizing applicant records, verification, and admission pipelines.",
+    role: ["Software Development", "Database Architecture", "UX/UI"],
+    tags: ["JavaScript", "PHP", "SQL", "UX/UI"],
+    link: "https://admision.postgradounap.edu.pe/",
     image: {
-      src: "/images/project-medmind.svg",
-      alt: "Clinical triage board"
-    },
-    featured: false
-  },
-  {
-    id: "pulse-analytics",
-    number: "08",
-    title: "Pulse Analytics",
-    tagline: "Telemetry & Performance",
-    discipline: "Architecture & Observability",
-    category: "Development & Architecture",
-    year: "2023",
-    client: "Fintech Infrastructure",
-    description:
-      "Latency monitoring dashboard for transaction gateways with predictive audio-visual alarms before network saturation thresholds.",
-    role: ["Frontend Architecture", "Dashboarding", "Metrics"],
-    tags: ["Grafana API", "Tailwind", "EventSource", "TypeScript"],
-    link: "#pulse-analytics",
-    image: {
-      src: "/images/project-cortex.svg",
-      alt: "Telemetry dashboard"
-    },
-    featured: false
-  },
-  {
-    id: "aether-motion",
-    number: "09",
-    title: "Aether Motion",
-    tagline: "Interaction & Micro-narrative",
-    discipline: "Creative Coding & Interaction",
-    category: "Design & UX",
-    year: "2023",
-    client: "Digital Creative Studio",
-    description:
-      "Suite of fluid micro-interactions, elastic physics interpolations, and page transitions for internationally awarded websites.",
-    role: ["Creative Developer", "Motion Specialist"],
-    tags: ["GSAP", "Lenis Scroll", "Framer", "Modern CSS"],
-    link: "#aether-motion",
-    image: {
-      src: "/images/project-cortex.svg",
-      alt: "Physics and micro-interactions playground"
-    },
-    featured: false
-  },
-  {
-    id: "neurocare-sim",
-    number: "10",
-    title: "NeuroCare Sim",
-    tagline: "Neuroscience & 3D Modeling",
-    discipline: "Simulation & UI Engineering",
-    category: "Healthcare & Education",
-    year: "2023",
-    client: "School of Medicine",
-    description:
-      "Anatomical neural pathway simulator for early diagnosis of peripheral neuropathies through guided clinical case studies.",
-    role: ["3D Web Developer", "Clinical UX"],
-    tags: ["Three.js", "GLTF", "Accessibility", "TypeScript"],
-    link: "#neurocare-sim",
-    image: {
-      src: "/images/project-medmind.svg",
-      alt: "Neural pathway simulator"
-    },
-    featured: false
-  },
-  {
-    id: "kairos-digital",
-    number: "11",
-    title: "Kairos Digital",
-    tagline: "Publishing & Editorial Typography",
-    discipline: "Editorial Web & Typography",
-    category: "Design & UX",
-    year: "2023",
-    client: "Contemporary Essay Publication",
-    description:
-      "Digital reading canvas supporting vertical grid rhythms, variable font axes, and a low-luminance calm night reading mode.",
-    role: ["Digital Art Director", "Editorial Frontend"],
-    tags: ["Variable Fonts", "CSS Grid", "Zen Reader", "Performance"],
-    link: "#kairos-digital",
-    image: {
-      src: "/images/project-cortex.svg",
-      alt: "Kairos editorial platform"
+      src: "/images/project-sigae.svg",
+      alt: "Admisión Postgrado UNAP - Institutional admission and application platform"
     },
     featured: false
   }
@@ -535,9 +452,9 @@ export const enDictionary: I18nDictionary = {
     headingLine1: "Let's work",
     headingLine2: "together",
     ctaButton: "Get in touch",
-    email: "contacto@jeffsantos.dev",
-    phone: "+51 927 847 430",
-    phoneDisplay: "+51 927 847 430",
+    email: "daylersan@gmail.com",
+    phone: "+51966870897",
+    phoneDisplay: "+51 966 870 897",
     location: "Lima, Peru",
     timeZone: "17:48 COT (UTC-5)",
     availability: "Available for select projects and product architecture consulting",

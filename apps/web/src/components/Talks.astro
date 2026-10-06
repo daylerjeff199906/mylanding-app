@@ -1,5 +1,6 @@
 ---
 import type { I18nTalks } from "@platform/types";
+import { ArrowRight } from "lucide-astro";
 
 interface Props {
   data: I18nTalks;
@@ -182,9 +183,9 @@ const items = data.items || [];
         </p>
       </div>
 
-      <a href="#contacto" class="btn-primary shrink-0 no-underline">
+      <a href={isEn ? "/en/contact" : "/contacto"} class="btn-primary shrink-0 no-underline inline-flex items-center gap-2">
         <span>{isEn ? "Invite to Speak" : "Invitar a un evento"}</span>
-        <span>→</span>
+        <ArrowRight class="w-4 h-4" />
       </a>
     </div>
   </div>

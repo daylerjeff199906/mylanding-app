@@ -1,7 +1,7 @@
 ---
 import { getDictionary } from "@platform/content";
 import Layout from "../layouts/Layout.astro";
-import Contact from "../components/Contact.astro";
+import { ArrowLeft, ArrowUpRight } from "lucide-astro";
 
 const dict = getDictionary("es");
 const allProjects = dict.projects.allProjects || dict.projects.items;
@@ -9,19 +9,19 @@ const allProjects = dict.projects.allProjects || dict.projects.items;
 const categories = [
   { id: "all", label: "Todos", count: allProjects.length },
   {
-    id: "Desarrollo & Arquitectura",
-    label: "Desarrollo & Arquitectura",
-    count: allProjects.filter((p) => p.category === "Desarrollo & Arquitectura").length
+    id: "Biodiversidad & Ciencia",
+    label: "Biodiversidad & Ciencia",
+    count: allProjects.filter((p) => p.category === "Biodiversidad & Ciencia").length
   },
   {
-    id: "Diseño & UX",
-    label: "Diseño & UX",
-    count: allProjects.filter((p) => p.category === "Diseño & UX").length
+    id: "Salud & Datos",
+    label: "Salud & Datos",
+    count: allProjects.filter((p) => p.category === "Salud & Datos").length
   },
   {
-    id: "Salud & Educación",
-    label: "Salud & Educación",
-    count: allProjects.filter((p) => p.category === "Salud & Educación").length
+    id: "Educación & Gestión",
+    label: "Educación & Gestión",
+    count: allProjects.filter((p) => p.category === "Educación & Gestión").length
   }
 ];
 ---
@@ -38,7 +38,7 @@ const categories = [
         href="/#proyectos"
         class="inline-flex items-center gap-2 text-xs font-mono font-medium text-muted hover:text-ink dark:hover:text-white transition-colors group"
       >
-        <span class="group-hover:-translate-x-1 transition-transform">←</span>
+        <ArrowLeft class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
         <span>Volver al inicio</span>
       </a>
     </div>
@@ -56,8 +56,8 @@ const categories = [
       </h1>
 
       <p class="text-base sm:text-lg font-sans text-muted max-w-2xl leading-relaxed">
-        Una recopilación exhaustiva de arquitecturas frontend, sistemas de diseño accesibles,
-        plataformas de entrenamiento clínico y soluciones de automatización.
+        Una recopilación de plataformas digitales, sistemas de datos epidemiológicos, acústica amazónica,
+        sistemas académicos y arquitecturas web creadas con foco en simplicidad y personas.
       </p>
 
       <!-- Category Filter Pills -->
@@ -107,7 +107,18 @@ const categories = [
                     </span>
                   </div>
                   <h2 class="text-2xl sm:text-4xl font-sans font-medium tracking-tight text-ink dark:text-white group-hover:translate-x-2 transition-transform duration-300">
-                    {project.title}
+                    {project.link && project.link.startsWith("http") ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-primary transition-colors inline-flex items-baseline gap-2"
+                      >
+                        <span>{project.title}</span>
+                      </a>
+                    ) : (
+                      project.title
+                    )}
                   </h2>
                 </div>
 
@@ -117,7 +128,7 @@ const categories = [
                     {project.description}
                   </p>
                   <div class="flex flex-wrap gap-1.5 pt-1">
-                    {project.tags.slice(0, 3).map((tag) => (
+                    {project.tags.map((tag) => (
                       <span class="px-2 py-0.5 text-[10px] font-mono rounded-sm bg-surface dark:bg-white/5 text-muted border border-border dark:border-white/10">
                         {tag}
                       </span>
@@ -125,18 +136,29 @@ const categories = [
                   </div>
                 </div>
 
-                <!-- Col 3: Discipline + Year + Arrow (lg:col-span-3 lg:text-right) -->
+                <!-- Col 3: Discipline + Year + Link / Arrow (lg:col-span-3 lg:text-right) -->
                 <div class="lg:col-span-3 flex lg:flex-col lg:items-end justify-between items-baseline gap-2">
                   <span class="text-xs font-mono font-medium text-ink dark:text-white">
                     {discipline}
                   </span>
                   <div class="flex items-center gap-3">
                     <span class="text-xs font-mono text-muted">
-                      {project.year || "2025"}
+                      {project.year || "2026"}
                     </span>
-                    <span class="text-sm font-mono text-muted group-hover:text-primary group-hover:translate-x-1 transition-all">
-                      ↗
-                    </span>
+                    {project.link && project.link.startsWith("http") ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-xs font-mono text-primary font-medium hover:underline"
+                        title={`Visitar ${project.title}`}
+                      >
+                        <span>Ver proyecto</span>
+                        <ArrowUpRight class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </a>
+                    ) : (
+                      <ArrowUpRight class="w-3.5 h-3.5 text-muted/40" />
+                    )}
                   </div>
                 </div>
               </div>
@@ -151,9 +173,6 @@ const categories = [
       No se encontraron proyectos para este filtro.
     </div>
   </div>
-
-  <!-- Contact CTA at the bottom -->
-  {dict.contact && <Contact data={dict.contact} site={dict.site} />}
 </Layout>
 
 <script>
